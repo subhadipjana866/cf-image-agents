@@ -668,6 +668,31 @@ Writing offline tests for the loop (scripted model replies + fake agents), like 
 - `Bash` — Init git, stage files, check sizes and scan for secrets
 - `Bash` — Include .dev.vars.example; confirm .dev.vars excluded
 - `AskUserQuestion`
+- `Bash` — Refresh prompt history and create first commit
+- `Bash` — Create public GitHub repo and push main
 
 </details>
+
+The project is pushed to GitHub as a public repo: https://github.com/subhadipjana866/cf-image-agents (one commit on `main`). I tested the full flow in the app locally: one message produced a flash-sale vase image, and a second message turned into two separate edits, so the chat now holds versions v1, v2 and v3. The loop tests pass 5/5 with scripted model replies, and the typecheck is clean. Nothing is deployed.
+
+**What runs now**
+- **Your agents.** I copied `graphic_designer/`, `image_agents/` and `agent_navigation/` from your Kognie-python working tree unchanged into `agents_service/`. A small FastAPI wrapper (`service.py`) builds them exactly as `build.py` does, limited to what you picked:
+  - **Generator:** freeform designs, more variations, regenerate.
+  - **Editor:** the 15 generative edit tools.
+  - **Chitchat:** unchanged.
+
+  It runs as a Cloudflare Container image (561 MB).
+- **Making it fit in a container.** A shim file stubs the imports that would have pulled in torch, which these three agents never reach. It also replaces S3 with an in-memory store, and the image bytes go back to the Worker, which saves them to R2.
+- **The loop.** interpret → select → readiness → dispatch runs in the chat agent (the Durable Object). It uses your original `interpretation.txt` and `selection.txt` prompts and your three agent cards. When one of your agents asks the user a question, the user's answer resumes the same run.
+- **UI.** Images show inline in the chat, and a side panel shows the current image and every version. Questions with options become buttons, and you can upload an image to edit.
+
+**Things to know**
+- **Local dev needs one extra terminal.** Under `npm run dev`, the Cloudflare container can't reach the internet, so your agents can't call OpenAI. Run `npm run agents` first. It runs the same image under plain Docker on port 8090, and `AGENTS_SERVICE_URL` in `.dev.vars` points the Worker there. A copy is running now as `kognie-agents-dev`. Without that setting the app uses the real Container binding, which is the production path.
+- **"More variations" needs `GEMINI_API_KEY`.** Your create-more pipeline uses Gemini.
+- **The repo is public**, as you chose. Anyone can now see the Kognie code, including `nodes.py`, the v33 pipeline, the prompts and the fonts, and the full prompt history. I checked for secrets before pushing and found none; your key stays in the git-ignored `.dev.vars`.
+- **Not done from the original plan:** Cloudflare Workflows and voice input. The loop runs directly in the Durable Object. `docs/PLAN.md` records this change of plan.
+- **Prompt history:** the commit includes the history up to just before the push. The hook keeps updating `prompt_history/` after every turn, so before you submit, commit and push it once more:
+  ```bash
+  git add prompt_history && git commit -m "chore: update prompt history" && git push
+  ```
 

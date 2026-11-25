@@ -1,0 +1,116 @@
+{
+  "operations": [
+    {
+      "id": "brightness",
+      "label": "Brightness",
+      "aliases": ["bright", "brighter", "darker", "lighten", "darken", "lighter"],
+      "mode": "specific",
+      "description": "Overall brightness of the whole graphic (a slider from -100 to +100)."
+    },
+    {
+      "id": "contrast",
+      "label": "Contrast",
+      "aliases": ["more contrast", "less contrast", "punchier", "flatter", "washed out"],
+      "mode": "specific",
+      "description": "Overall contrast of the whole graphic (a slider from -100 to +100)."
+    },
+    {
+      "id": "exposure",
+      "label": "Exposure",
+      "aliases": ["overexposed", "underexposed", "expose"],
+      "mode": "specific",
+      "description": "Exposure of the whole graphic, like a camera's exposure (a slider from -100 to +100)."
+    },
+    {
+      "id": "temperature",
+      "label": "Temperature",
+      "aliases": ["warmth", "warmer", "warm tone", "colour temperature", "color temperature"],
+      "mode": "specific",
+      "description": "Warmth of the whole graphic: pushes all of it towards warm, golden tones (a slider; only the warm side has an effect)."
+    },
+    {
+      "id": "tint",
+      "label": "Tint",
+      "aliases": ["color tint", "colour tint", "tint color", "hue", "hue shift"],
+      "mode": "specific",
+      "description": "Shifts the hue of every colour in the whole graphic at once (a slider from -100 to +100). Not recolouring one element."
+    },
+    {
+      "id": "opacity",
+      "label": "Opacity",
+      "aliases": ["transparency", "transparent", "see-through", "fade", "translucent"],
+      "mode": "always",
+      "description": "How opaque the whole graphic is on the canvas, from 0% (invisible) to 100% (solid)."
+    },
+    {
+      "id": "corner_radius",
+      "label": "Corner radius",
+      "aliases": ["border radius", "rounded corners", "corner rounding", "round the corners", "sharp corners", "square corners"],
+      "mode": "always",
+      "description": "How rounded the corners of the graphic's frame are."
+    },
+    {
+      "id": "border_width",
+      "label": "Border width",
+      "aliases": ["border thickness", "stroke width", "frame thickness", "outline width", "thicker border", "thinner border"],
+      "mode": "always",
+      "description": "Thickness of the border drawn around the outside edge of the graphic."
+    },
+    {
+      "id": "border_color",
+      "label": "Border colour",
+      "aliases": ["border color", "stroke color", "stroke colour", "outline color", "outline colour", "frame colour", "add a border", "add an outline"],
+      "mode": "always",
+      "description": "Colour of the border drawn around the outside edge of the graphic. Adding a plain border or outline around the whole graphic is this control."
+    },
+    {
+      "id": "rotation",
+      "label": "Rotation",
+      "aliases": ["rotate", "turn", "tilt", "angle", "degrees", "upside down"],
+      "mode": "always",
+      "description": "Rotates the WHOLE graphic on the canvas by a number of degrees. Not rotating one object inside the design."
+    },
+    {
+      "id": "flip",
+      "label": "Flip",
+      "aliases": ["mirror", "flip horizontally", "flip vertically", "mirror image", "reverse"],
+      "mode": "always",
+      "description": "Mirrors the WHOLE graphic horizontally or vertically. Not flipping one object inside the design."
+    },
+    {
+      "id": "width",
+      "label": "Width",
+      "aliases": ["wider", "narrower", "width in pixels"],
+      "mode": "specific",
+      "description": "Width of the graphic on the canvas, in pixels. Not resizing the design for another platform or aspect ratio."
+    },
+    {
+      "id": "height",
+      "label": "Height",
+      "aliases": ["taller", "shorter", "height in pixels"],
+      "mode": "specific",
+      "description": "Height of the graphic on the canvas, in pixels. Not resizing the design for another platform or aspect ratio."
+    },
+    {
+      "id": "position",
+      "label": "Position",
+      "aliases": ["x position", "y position", "coordinates", "move the graphic", "place it at"],
+      "mode": "specific",
+      "description": "Where the whole graphic sits on the canvas (X and Y in pixels). Not moving an object inside the design."
+    },
+    {
+      "id": "crop",
+      "label": "Crop",
+      "aliases": ["trim", "cut off", "crop out", "trim the edges"],
+      "mode": "always",
+      "description": "Trims the edges of the whole graphic, cutting part of it away. Not resizing or extending the design for another platform."
+    },
+    {
+      "id": "shrink_size",
+      "label": "Shrink size",
+      "aliases": ["shrink", "reduce size", "make smaller", "compress"],
+      "mode": "always",
+      "description": "Shrinks the whole graphic down to a smaller size, while keeping the same aspect ratio. Not resizing the design for another platform or aspect ratio."
+    }
+  ]
+}

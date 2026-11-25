@@ -1,0 +1,166 @@
+STYLE_NAME: Memphis
+STYLE_DESCRIPTION: The Memphis Design Group (1980s Milan) brought radical graphic joy —
+geometric shapes in clashing primaries, irreverent patterns, and a deliberate rejection
+of "good taste." Modern Memphis reinterprets this as controlled chaos: bold, energetic,
+and culturally loaded with an optimistic maximalism.
+
+==============================================================================
+COLOR_SYSTEM
+==============================================================================
+PHILOSOPHY: Maximum chromatic energy through contrast and saturation. Memphis does not
+neutralise — it collides. Primary triads are deployed unapologetically, with black and
+white as structural anchors.
+
+PRIMARY PALETTE (Core Memphis):
+  - Shock Yellow:        #FFE03D  (primary background or dominant fill)
+  - Hot Coral / Red:     #FF4B4B  (accent, shape fills, typographic pops)
+  - Electric Blue:       #1E56FF  (counter-accent, backgrounds, geometric fills)
+  - Stark White:         #FFFFFF  (negative space, shape infill, text ground)
+  - Jet Black:           #0D0D0D  (structural lines, bold text, outlines)
+
+SECONDARY PALETTE (Modern Memphis extensions):
+  - Acid Green:          #7BFF4A  (third accent for triple-triad compositions)
+  - Candy Pink:          #FF7ABB  (lifestyle or beauty-adjacent campaigns)
+  - Teal-Turquoise:      #00C4B4  (tech or youth campaigns)
+  - Deep Purple:         #6600CC  (premium-youth crossover compositions)
+
+BACKGROUND VARIANTS:
+  A. "Checkerboard Ground": alternating Shock Yellow / White tiles in a fine grid
+  B. "Solid Burst": single flat primary colour with pattern overlay in contrasting colour
+  C. "White Canvas": flat white background with Memphis shapes as foreground elements
+
+FORBIDDEN COLOUR BEHAVIOURS:
+  - No muted, desaturated, or earth tones
+  - No gradients (unless a deliberate 2-colour hard gradient, not a soft blend)
+  - No black backgrounds (Memphis lives in light and colour)
+  - No single-colour monochromatic compositions
+
+==============================================================================
+MATERIAL_VOCABULARY
+==============================================================================
+SURFACES:
+  - Flat colour fills — pure pigment, no texture, no shading within shapes
+  - Pattern overlays: polka dots, diagonal stripes, squiggly lines, triangle clusters,
+    checkerboard grids — rendered as flat graphic elements, not photographic textures
+  - Laminate / glossy plastic — products rendered with a clean product-photo look
+    against the graphic background, not blended into it
+  - Hard-edge geometric shapes: circles, triangles, right-angle rectangles used
+    as compositional elements and framing devices
+
+PRODUCT TREATMENT:
+  - Products are photographically realistic but placed as graphic-design objects —
+    they sit on or within geometric shape arrangements, never blended into the background
+  - Products may be outlined with a 3–4pt black stroke for graphic isolation
+  - No product drop shadows — use flat geometric shadow shapes (parallelogram offset)
+    in a contrasting solid colour instead
+
+==============================================================================
+LIGHTING_ENVIRONMENT
+==============================================================================
+PRIMARY LIGHT: Flat, even studio lighting — no visible directional shadow play
+  on the background. The background reads as 100% graphic, not photographic.
+PRODUCT LIGHTING: Clean, bright, near-overhead studio light producing even
+  illumination. Products are sharp and clear — Memphis is not moody.
+SHADOW STYLE: Flat offset shadow (a solid-colour geometric duplicate offset by
+  6–10px in a contrasting solid colour) instead of soft drop shadows.
+HIGHLIGHTS: Minimal specular highlights on the product only, used to confirm
+  its three-dimensionality within the flat design system.
+COLOUR TEMPERATURE: Cool-neutral (5500–6000K). Memphis is not warm.
+FORBIDDEN LIGHTING:
+  - No moody chiaroscuro
+  - No warm golden-hour lighting
+  - No bokeh or depth-of-field blur
+  - No vignettes
+
+==============================================================================
+TYPOGRAPHIC_PERSONALITY
+==============================================================================
+PRIMARY TYPEFACE CHARACTER: Geometric sans-serif, bold weight — Futura Bold,
+  Helvetica Neue Black, or equivalent. Clean, rational, unapologetically large.
+  - Weight: Bold to ExtraBold
+  - Case: Mix of ALL CAPS and Title Case (never all lowercase for hero text)
+  - Tracking: Tight (0 to -0.02em) for impact; expanded (0.1em) for labels only
+
+SECONDARY TYPEFACE CHARACTER: Contrasting slab serif or a second geometric sans
+  at a different weight. Used for subheads or body copy.
+  - Weight: Regular to Medium
+  - Used as a visual counterpoint to the primary bold block
+
+ACCENT TYPOGRAPHY TRICKS (Memphis-specific):
+  - Text blocks rotated 90° on the vertical axis (for dates, edition labels)
+  - Text on a coloured rectangular ground (text box filled with a contrasting flat colour)
+  - Strikethrough, underline, or banded emphasis lines in contrasting colour
+  - Stacked short words in very large type as a compositional element
+
+TYPOGRAPHIC RULES:
+  - Text is a graphic element — headlines can be part of the pattern composition
+  - Black outlines on text are permitted (1–2pt stroke)
+  - No script or cursive typefaces
+  - No thin or light-weight typefaces for primary text
+  - No drop shadows (use hard offset duplicates instead)
+
+==============================================================================
+SPATIAL_ATMOSPHERE
+==============================================================================
+COMPOSITION FEEL: Dynamic and intentionally busy — but structured chaos, not random.
+  The grid underlies everything even if not visible. Shapes and text are on the grid.
+DENSITY: Medium-high. Memphis fills its canvas. Negative space is used as a graphic
+  element (a flat-colour zone), not as breathing room.
+PATTERN DENSITY: Pattern fills cover 20–50% of the background canvas.
+LAYERING: Shapes overlap and clip — Memphis does not fear collisions between elements.
+SCALE CONTRAST: Extreme size differences between elements create visual energy.
+  A large circle next to a tiny dot next to a giant headline.
+
+==============================================================================
+DECORATIVE_LANGUAGE
+==============================================================================
+PERMITTED MOTIFS:
+  - Polka dot fields (varying sizes, single colour per field)
+  - Diagonal stripe fills (2-colour, equal width, 45° angle)
+  - Squiggle line clusters (free-form wave lines, 1–2pt, one colour)
+  - Dot-dash border patterns
+  - Stacked geometric shapes: overlapping circles, triangles, rectangles
+  - Hard geometric drop shadow copies (solid parallelogram offset in contrasting colour)
+
+SIGNATURE MOVE: The "shape explosion" — 4–8 geometric shapes (mix of sizes and forms)
+  radiating from behind the hero product in contrasting colours.
+
+FORBIDDEN MOTIFS:
+  - Photographic or natural textures (marble, wood, fabric)
+  - Organic curves (flowers, leaves, natural forms — these are anti-Memphis)
+  - Gold or metallic finishes
+  - Gradient fills within shapes
+  - Any element that reads as luxury, minimalism, or restraint
+
+==============================================================================
+EMOTIONAL_SIGNATURE
+==============================================================================
+TARGET EMOTION: Euphoric optimism. The viewer should feel a shot of energy —
+  joyful, stimulated, and slightly overwhelmed in the best possible way.
+BRAND ARCHETYPES: The Jester, The Creator — irreverence through abundance.
+PACING: Fast. The eye moves constantly.
+ANTI-EMOTION: Never sombre, never quiet, never understated.
+
+==============================================================================
+HARD_BANS
+==============================================================================
+The following elements must NEVER appear in any Memphis-style generation.
+These feed into the image generation API as mandatory negative_prompt parameters.
+
+- muted tones, earth tones, desaturated palette, monochromatic grey compositions
+- soft gradients, radial blending, photographic sky gradients
+- black or very dark backgrounds
+- thin lightweight typography, delicate serif fonts
+- minimalist compositions with excessive white space
+- marble texture, gold metallic surfaces, velvet textures
+- moody atmospheric lighting, bokeh backgrounds, depth of field blur
+- vignettes, dark corners
+- organic natural forms (flowers, leaves, wood, stone)
+- photorealistic environmental backgrounds (cityscapes, interiors, outdoors)
+- soft drop shadows (use flat geometric offset shadows instead)
+- watermarks, copyright text, photo credit overlays
+- jpeg compression artifacts, pixelation, blurry text
+- overexposed areas, blown highlights
+- distorted anatomy, extra limbs, malformed hands
+- duplicate product instances
+- luxury minimalism aesthetic cues

@@ -1,0 +1,43 @@
+{
+  "_readme": [
+    "Combination matrix for phase0_layout_factory.py (Avenue 1 -- offline batch).",
+    "Review/edit this list, then run:  python phase0_layout_factory.py --dry-run   (list combos)",
+    "                                  python phase0_layout_factory.py --sample 10 (validate a sample)",
+    "                                  python phase0_layout_factory.py             (full run)",
+    "Every design_goal is crossed with every platform => len(goals) x len(platforms) combos.",
+    "aspect_ratio values are constrained to what the image API supports:",
+    "  1:1, 4:5, 9:16, 16:9, 3:4, 4:3, 5:4",
+    "NOTE: Pinterest's true ratio is 2:3 -- unsupported by the image API, so 3:4 (nearest) is used."
+  ],
+  "design_goals": [
+  "Flash Sale",
+  "Festive / Seasonal Sale",
+  "Product Launch",
+  "Discount Coupon / Promo Code",
+  "Brand Awareness / Quote Post",
+  "Event Announcement",
+  "Giveaway / Contest",
+  "New Collection Drop",
+  "Customer Testimonial",
+  "Seasonal Greeting",
+  "We're Hiring / Job Opening",
+  "Team Introduction / New Hire",
+  "Grand Opening",
+  "Company Milestone / Anniversary",
+  "App Download Promo",
+  "Webinar Invitation",
+  "Workshop / Masterclass Promo"
+],
+  "platforms": [
+  {"name": "Instagram Square Post",      "aspect_ratio": "1:1"},
+  {"name": "Instagram Portrait Post",    "aspect_ratio": "4:5"},
+  {"name": "Instagram Story",            "aspect_ratio": "9:16"},
+  {"name": "Facebook Feed Landscape",    "aspect_ratio": "16:9"},
+  {"name": "Pinterest Pin",              "aspect_ratio": "3:4"},
+  {"name": "LinkedIn Feed Post",         "aspect_ratio": "5:4"},
+  {"name": "YouTube Thumbnail",          "aspect_ratio": "16:9"},
+  {"name": "Presentation Slide",         "aspect_ratio": "4:3"},
+  {"name": "Digital Signage Portrait",   "aspect_ratio": "9:16"},
+  {"name": "X (Twitter) In-Stream Post", "aspect_ratio": "16:9"}
+]
+}

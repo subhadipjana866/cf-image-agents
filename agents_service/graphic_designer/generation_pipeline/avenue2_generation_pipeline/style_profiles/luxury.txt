@@ -1,0 +1,155 @@
+STYLE_NAME: Luxury
+STYLE_DESCRIPTION: Ultra-premium editorial aesthetic. Restraint is the loudest statement.
+Luxury design communicates exclusivity through what is absent — generous negative space,
+muted metallic accents, and an almost architectural sense of silence and control.
+
+==============================================================================
+COLOR_SYSTEM
+==============================================================================
+PHILOSOPHY: Tonal restraint with a single precious accent. Never more than 4 colours
+in a single composition. Backgrounds are near-neutral; the hero colour is subtle, not bold.
+
+PRIMARY PALETTE:
+  - Deep Ivory / Warm Off-White:  #F5F0E8  (primary background for light variant)
+  - Obsidian Black:               #0A0A08  (primary background for dark variant)
+  - Champagne Gold (primary accent): #C9A84C
+  - Pale Gold Highlight:          #E8D5A0
+  - Warm Ash / Greige:            #B8AFA4  (secondary text, dividers)
+
+EXTENDED PALETTE (use sparingly, one per composition maximum):
+  - Antique Rose:     #C4938A  (warmth accent for lifestyle/beauty)
+  - Slate Blue-Grey:  #8A97A4  (cool alt accent for tech/watch/fragrance)
+  - Ivory Cream:      #EDE5D8  (background variant, product-forward layouts)
+
+TYPOGRAPHY COLOURS:
+  - Headline: #0A0A08 (dark) or #F5F0E8 (light) — pure, no tinting
+  - Body/subtext: #7A7169 (dark bg) or #5C544C (light bg)
+  - Accent label: #C9A84C — used for one element only (price, date, tagline)
+
+FORBIDDEN COLOUR BEHAVIOURS:
+  - No bright primaries (no pure red, blue, green, yellow)
+  - No high-saturation gradients
+  - No neon, fluorescent, or digital-glow colours
+  - No colour gradients on typography
+
+==============================================================================
+MATERIAL_VOCABULARY
+==============================================================================
+SURFACES:
+  - Matte white marble with faint grey veining — for pedestals, backgrounds, surfaces
+  - Brushed gold / satin brass — for trim accents, ornamental lines, borders
+  - Velvet — deep, slightly sheen, used as fabric backgrounds or product bases
+  - Polished obsidian — reflective black for dark variant product surfaces
+  - Uncoated paper / cotton paper texture — subtle grain overlay on backgrounds
+  - Fine linen weave — for soft-goods or lifestyle product backgrounds
+
+PRODUCT TREATMENT:
+  - Products are rendered with a near-photographic precision, isolated with a subtle
+    gradient shadow beneath them (not a hard drop shadow)
+  - Floating mid-air or resting on a material surface — never on plain white unless
+    the brand is minimalism-first
+  - Reflections are soft and diffuse, not mirror-sharp unless the product is glass
+
+==============================================================================
+LIGHTING_ENVIRONMENT
+==============================================================================
+PRIMARY LIGHT SOURCE: Large softbox above-left, diffused through silk — produces
+  even, shadow-free illumination on the hero product with no hotspots.
+FILL LIGHT: Subtle warm reflector from right — fills shadows to a 3:1 ratio maximum,
+  never eliminating them entirely.
+ACCENT / RIM LIGHT: Single thin champagne-gold rim light from upper-right — defines
+  the product edge without flaring.
+SHADOW STYLE: Soft, long shadow falling towards lower-right at 15–20° from vertical.
+  Shadows are warm (not cold/blue). Maximum shadow density at 30% opacity.
+BACKGROUND LIGHT: Gradual vignette towards edges, centre is the brightest point.
+COLOUR TEMPERATURE: 3200–3800K (warm candlelight to studio tungsten range). Never cool.
+FORBIDDEN LIGHTING:
+  - No hard shadows with sharp edges
+  - No dramatic spotlight pools
+  - No neon or coloured gel lighting
+  - No blown highlights or overexposed areas
+
+==============================================================================
+TYPOGRAPHIC_PERSONALITY
+==============================================================================
+PRIMARY TYPEFACE CHARACTER: High-contrast serif — tall x-height, razor-thin hairlines,
+  generous optical spacing. Think Didot, Bodoni, or editorial fashion mastheads.
+  - Weight: Light to Regular for headlines; never bold
+  - Tracking: Expanded (0.08–0.15em) for luxury breathing room
+  - Leading: 1.1–1.2 × font size for ultra-tight editorial stacking
+
+SECONDARY TYPEFACE CHARACTER: Minimal sans-serif — geometric or humanist, ultra-light
+  weight only. Used for subtext, labels, dates.
+  - Weight: ExtraLight or Thin
+  - Tracking: Wide (0.15–0.25em for all-caps labels)
+  - Case: Sentence case for body; ALL CAPS with expanded tracking for labels only
+
+ACCENT TYPOGRAPHY: Single word or phrase in #C9A84C — the most precious typographic
+  element. Used for taglines, edition labels, or price-point calls.
+
+TYPOGRAPHIC RULES:
+  - Maximum 2 typeface families per composition
+  - No drop shadows on text
+  - No outlined/hollow text
+  - No decorative scripts unless brand identity requires it
+  - Text never overlaps the hero product's core body
+
+==============================================================================
+SPATIAL_ATMOSPHERE
+==============================================================================
+COMPOSITION FEEL: Architectural stillness. The image should feel like a museum vitrine.
+  Negative space is intentional — at least 35% of the canvas is empty or near-empty.
+DEPTH OF FIELD: Shallow focus on the hero product; background subtly soft but never
+  bokeh-heavy. The soft-focus is editorial, not cinematic.
+BACKGROUND DEPTH: Subtle tonal gradient from centre-light to edge-dark creates depth
+  without a tangible environment. Alternatively, a single flat surface at camera angle.
+CROP & FRAMING: Generous breathing room around the hero. Never tight-cropped to edges.
+  Products positioned in upper-centre or golden-ratio sweet spots.
+
+==============================================================================
+DECORATIVE_LANGUAGE
+==============================================================================
+PERMITTED MOTIFS:
+  - Single thin gold hairline rule (0.5–1pt) as a horizontal or vertical divider
+  - Monogram or brand mark at a scale no larger than 5% canvas height
+  - Fine geometric frame (unfilled rectangle) set back from canvas edges by 3–4%
+  - Minimal botanical silhouette as a secondary compositional element (never dominant)
+
+FORBIDDEN MOTIFS:
+  - Patterns, textures, or repeating geometric fills
+  - Badge or starburst graphics
+  - Ribbons, banners, flourishes
+  - Any element that reads as "discount" or "sale" visual language
+  - Drop shadows on decorative elements
+
+==============================================================================
+EMOTIONAL_SIGNATURE
+==============================================================================
+TARGET EMOTION: Reverence. The viewer should feel they are encountering something
+  rare and considered. Desire is cultivated through restraint, not excitement.
+BRAND ARCHETYPES: The Sage, The Ruler — authority through precision.
+PACING: Slow. The design rewards careful looking.
+ANTI-EMOTION: Never frantic, never playful, never loud.
+
+==============================================================================
+HARD_BANS
+==============================================================================
+The following elements must NEVER appear in any Luxury-style generation.
+These feed into the image generation API as mandatory negative_prompt parameters.
+
+- bright saturated colours, rainbow palettes, neon colours, fluorescent colours
+- bold heavy typography, thick font weights
+- drop shadows on text
+- starburst graphics, badge graphics, ribbon graphics, banner graphics
+- sale percentage callouts in large bold type
+- cluttered busy compositions, multiple competing focal points
+- cartoon or illustrative elements
+- pixel art, retro 8-bit aesthetics
+- stock photo generic backgrounds (city skylines, grass fields)
+- watermarks, visible photo credit text
+- overexposed areas, blown highlights, harsh specular flares
+- jpeg compression artifacts, pixelation, low resolution noise
+- extra limbs, distorted anatomy, malformed hands
+- duplicate product instances
+- text that is blurry, distorted, or difficult to read
+- patterns that tile visibly across the background

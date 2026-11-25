@@ -1,0 +1,266 @@
+================================================================================
+                     GRAPHIC DESIGNER — INTERRUPT MESSAGES
+================================================================================
+All interrupt() calls across the graphic_designer module, listed with:
+  • The message/question sent to the user
+  • The interrupt type
+  • The function and file where it is sent
+  • When (context) the interrupt is triggered
+================================================================================
+
+
+--------------------------------------------------------------------------------
+1. chitChatHandler — Validation Subgraph variant
+   File: common_nodes.py (line 106)
+   Type: "text_input"
+   Message: <LLM-generated chit-chat response> + missingDetailsNotification
+            → "Could you please provide the missing details. Or ask
+               Kognie to go ahead without the missing details."
+   When: User sends a casual/chit-chat message while inside the
+         validation subgraph (editing workflow). The system replies
+         conversationally, then reminds the user to provide missing
+         editing details.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+2. chitChatHandler — Suggestion Subgraph variant
+   File: common_nodes.py (line 115)
+   Type: "text_input"
+   Message: <LLM-generated chit-chat response> + suggestionResponseNotification
+            → "Hey <username>, are you OK with these suggestions?
+               Feel free to modify or reject any of them. You won't hurt
+               our feelings! 😊"
+   When: User sends a casual/chit-chat message while inside the
+         suggestion subgraph. The system replies conversationally,
+         then nudges the user to respond to the pending suggestions.
+         Also includes the current suggestion stack (s_stack).
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+3. chitChatHandler — Main Graph variant
+   File: common_nodes.py (line 136)
+   Type: "text_input"
+   Message: <LLM-generated chit-chat response>
+   When: User sends a casual/chit-chat message in the main graph
+         (not inside any subgraph). The system replies conversationally
+         and waits for the user's next input.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+4. questionHandler — Validation Subgraph variant
+   File: common_nodes.py (line 261)
+   Type: "text_input"
+   Message: <LLM/RAG-generated answer to the user's question>
+            + "Please provide the missing details to continue editing
+               your image."
+   When: User asks a question (about Kognie, design, pricing, etc.)
+         while inside the validation subgraph. After answering,
+         the system reminds them to continue providing edit details.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+5. questionHandler — Suggestion Subgraph variant
+   File: common_nodes.py (line 269)
+   Type: "text_input"
+   Message: <LLM/RAG-generated answer to the user's question>
+            + "Please provide your feedback on the suggestions to
+               continue."
+   When: User asks a question while inside the suggestion subgraph.
+         After answering, the system prompts for suggestion feedback.
+         Also includes the current suggestion stack (s_stack).
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+6. questionHandler — Main Graph variant
+   File: common_nodes.py (line 287)
+   Type: "text_input"
+   Message: <LLM/RAG-generated answer to the user's question>
+   When: User asks a question in the main graph. The system answers
+         and waits for the user's next input.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+7. unclearHandler — Suggestion Subgraph variant
+   File: common_nodes.py (line 335)
+   Type: "text_input"
+   Message: suggestionUnclearNotification
+            → "Sorry, I couldn't quite understand your request. Could
+               you please clarify or provide more details about what
+               you'd like to do with the image? Here are some
+               suggestions to help you"
+   When: User sends an unclear/ambiguous message while inside the
+         suggestion subgraph. Also includes the suggestion stack.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+8. unclearHandler — Main Graph variant
+   File: common_nodes.py (line 354)
+   Type: "text_input"
+   Message: commonUnclearNotification
+            → "Sorry, I couldn't quite understand your request. Could
+               you please clarify or provide more details about what
+               you'd like to do with the image?"
+   When: User sends an unclear/ambiguous message in the main graph.
+         The navigator could not classify the user's intent.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+9. nextStep
+   File: common_nodes.py (line 387)
+   Type: "suggestions_executed"
+   Message: "What do you want to do next?"
+   When: After the suggestion subgraph has finished executing all
+         accepted suggestions. The system presents the updated image
+         and asks the user what they want to do next.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+10. editingManager
+    File: nodes.py (line 540)
+    Type: "text_input"
+    Message: "No image is selected or edit. Attached images doesn't
+              work for edit, try adding that image to the canvas and
+              retry"
+    When: User requests an image edit but no current_image_url is
+          available (no image selected on the canvas). The system
+          asks the user to add an image to the canvas first.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+11. bestModel
+    File: nodes.py (line 619)
+    Type: "text_input"
+    Message: bestModelNotification (template)
+             → "We recommend using <best_model> for generation based
+                on your purpose. Let us know if you want to switch to
+                this model?"
+             (where <best_model> is "Imagen 4" or "Nano-Banana Pro")
+    When: Before image generation begins. The system recommends the
+          optimal model based on the user's selected aspect ratio and
+          asks for confirmation or override.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+12. promptEnhancer
+    File: nodes.py (line 685)
+    Type: "generation_started"
+    Message: "Generating your image... This may take a while."
+    When: Image generation has been approved and the prompt is about to
+          be enhanced and sent to the generation model. This is a
+          status notification while the system prepares the image.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+13. interruptBeforeSuggestion
+    File: nodes.py (line 1101)
+    Type: "generation_completed"
+    Message: "You image has been generated successfully. However, Kognie
+              is coming up with some suggestions to improve your image
+              further. Please wait for those..."
+    When: Image generation has completed. The generated image URL is
+          returned to the user. The system then proceeds to create
+          improvement suggestions automatically.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+14. knownCategoryPromptHandler — Cancel path
+    File: nodes.py (line 1517)
+    Type: "text_input"
+    Message: "Your edit request has been cancelled. What would you like
+              to do next?"
+    When: The validation subgraph determined the user cancelled their
+          edit request (e.g. user said "never mind" or "cancel").
+          The system confirms cancellation and asks for next action.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+15. successfulEditHandler
+    File: nodes.py (line 1832)
+    Type: "text_input"
+    Message: "Your image has been edited successfully! What would you
+              like to do next?"
+    When: An image edit has been executed successfully (by any executor:
+          bananaProExecutor, bananaExecutor, fluxExecutor, or
+          gptImageExecutor). The edited image URL is returned along
+          with the previous image URL.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+16. extremeFallback
+    File: nodes.py (line 1856)
+    Type: "text_input"
+    Message: "Apologies 😞. We are unable to process your request at
+              the moment. Please try again from the beginning by
+              entering the prompt anew."
+    When: All editing/generation executors have failed. This is the
+          terminal fallback — the system apologizes and asks the user
+          to start over with a new prompt.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+17. suggestionHandler
+    File: nodes.py (line 2038)
+    Type: "text_input"
+    Message: suggestionHandlerMessage (template)
+             → "Dear <username>, Your personalized AI design critique
+                has some suggestions to improve your post, would you
+                like to enter suggestion mode to view them over?"
+    When: Suggestions have been generated by the suggestion pipeline
+          (caseAgent → creatorAgent → techAgent). The system presents
+          the suggestion stack to the user and asks if they want to
+          enter suggestion mode. Includes suggestion_type ("auto" or
+          "user_driven").
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+18. askUser (Suggestion Subgraph)
+    File: subgraphs/suggestion.py (line 1234)
+    Type: "text_input"
+    Message: "What do you want to do next?"
+    When: Inside the suggestion subgraph loop. After the user has
+          responded to one suggestion and the stack has been updated,
+          but there are still pending suggestions left. The system
+          presents the updated suggestion stack and waits for the
+          user's next response. (If all suggestions are accepted,
+          the loop ends without this interrupt.)
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+19. incompleteHandler (Validation Subgraph)
+    File: subgraphs/validation.py (line 779)
+    Type: "text_input"
+    Message: <clarification question from the validator>
+             (dynamic — generated by knownCategoryPromptValidator,
+              e.g. "I see multiple chairs here. Which specific one
+              would you like to change?")
+    When: During the editing validation flow. The entity extractor
+          and validator determined that mandatory fields are missing
+          or ambiguous. The system asks a targeted clarification
+          question to resolve the ambiguity.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+20. suggestionDisclaimer (Validation Subgraph)
+    File: subgraphs/validation.py (line 1118)
+    Type: "text_input"
+    Message: "Apologies! Currently we can't make any suggestions in
+              this workflow. We are working on it. But could you please
+              provide the missing info."
+    When: Inside the validation subgraph, when the user asks for
+          suggestions but the current editing workflow does not
+          support suggestion generation. The system apologizes and
+          asks for the missing information instead.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+SUMMARY BY INTERRUPT TYPE
+================================================================================
+
+  • "text_input"            — 17 interrupts (user input expected)
+  • "generation_started"    —  1 interrupt  (status notification, generation starting)
+  • "generation_completed"  —  1 interrupt  (status notification, generation done)
+  • "suggestions_executed"  —  1 interrupt  (status notification, suggestions applied)
+
+================================================================================
+

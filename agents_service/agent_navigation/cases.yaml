@@ -1,0 +1,257 @@
+# Navigation test cases: one user input each, and the agent(s) it should reach.
+#
+#   expect: [a, b]          tasks route to these agents, in this order
+#   unordered: true         ... in any order
+#   expect_all: agent       every task (one or more) routes to this agent
+#   expect_any: [[..], ..]  any one of these outcomes passes
+#
+# Outcome words besides agent ids: clarify (the orchestrator asks first),
+# pending (the input answers the pending task), cancel, none (no capable agent).
+#
+# assets: default (a1 v1 generated poster in focus) | none | person | edited
+# pending_task: the orchestrator's pending view, plus agent_id for reporting.
+
+# ---------------------------------------------------------------- generation
+- id: gen-catalog
+  input: Make an Instagram post for our Diwali sale
+  assets: none
+  expect: [image-generator]
+- id: gen-freeform
+  input: Design a wedding invitation for Priya and Arjun with a floral border
+  assets: none
+  expect: [image-generator]
+- id: gen-new-while-asset-in-focus
+  input: Now create a LinkedIn banner announcing we're hiring a backend engineer
+  expect: [image-generator]
+- id: gen-from-reference
+  input: Make a flyer for our Christmas party in the same style as this one
+  expect: [image-generator]
+- id: create-more
+  input: Give me 3 more versions of this
+  expect: [image-generator]
+- id: regenerate
+  input: Regenerate it, I want a completely fresh take on the same brief
+  expect: [image-generator]
+
+# ------------------------------------------------------------------- editing
+- id: edit-background
+  input: Change the background to navy blue
+  expect: [image-editor]
+- id: edit-headline-text
+  input: Change the headline to "Now Open"
+  expect: [image-editor]
+- id: edit-several-changes
+  input: Make the headline bigger, change the background to navy and make the CTA orange
+  expect_all: image-editor
+- id: edit-erase
+  input: Remove the cup on the left side
+  expect: [image-editor]
+- id: edit-brightness-exact
+  input: Increase brightness by 20
+  expect: [image-editor]
+- id: edit-style-switch
+  input: Make it look Bauhaus
+  expect: [image-editor]
+- id: edit-platform-resize
+  input: Make an Instagram story and a LinkedIn version of this
+  expect_all: image-editor
+- id: edit-upscale
+  input: Upscale this for print
+  expect: [image-editor]
+- id: edit-undo
+  input: Undo the last change, I liked the previous version better
+  assets: edited
+  expect: [image-editor]
+- id: edit-export
+  input: Can I get this as a transparent PNG?
+  expect: [image-editor]
+- id: edit-crop-square
+  input: Crop it to a square
+  expect: [image-editor]
+- id: edit-no-asset
+  input: Make the logo bigger
+  assets: none
+  # editor picked with missing target, or the orchestrator asks which design first
+  expect_any: [[image-editor], [clarify]]
+
+# ------------------------------------------------------------------ layering
+- id: layer-logo
+  input: Separate the logo as its own layer
+  expect: [layering-agent]
+- id: layer-cutout
+  input: Cut out the coffee cup so I get it on a transparent background
+  expect: [layering-agent]
+- id: layer-text
+  input: Make all the text editable as separate layers
+  expect: [layering-agent]
+- id: layer-whole-design
+  input: make layers
+  expect: [layering-agent]
+- id: layer-create-button
+  input: create layers
+  expect: [layering-agent]
+
+# ---------------------------------------------------------------------- slop
+- id: slop-hands
+  input: Her hands look weird, fix them
+  assets: person
+  expect: [slop-terminator]
+- id: slop-check
+  input: Check this for AI artifacts
+  expect: [slop-terminator]
+
+# ---------------------------------------------------- critique and suggestion
+- id: critic-improve
+  input: How can I make this design better?
+  expect: [critic-agent]
+- id: critic-unbalanced
+  input: Why does this look so unbalanced?
+  expect: [critic-agent]
+- id: critic-dislike
+  input: I don't like it
+  expect_any: [[critic-agent], [clarify]]
+- id: suggest-colours
+  input: What colours would work for the button?
+  expect: [suggestion-agent]
+- id: suggest-headlines
+  input: Give me some catchier headline ideas
+  expect: [suggestion-agent]
+
+# ----------------------------------------------------------------- evaluator
+- id: eval-score
+  input: Rate this design out of 10
+  expect: [image-evaluator]
+- id: eval-is-it-good
+  input: Is this good?
+  expect_any: [[image-evaluator], [critic-agent]]
+
+# ---------------------------------------------------------------- manual ops
+- id: manual-crop
+  input: Let me crop it myself
+  expect: [manual-ops]
+- id: manual-brightness
+  input: I want to drag the brightness slider myself
+  expect: [manual-ops]
+- id: manual-add-funds
+  input: Add 20 dollars to my account
+  assets: none
+  expect: [manual-ops]
+- id: manual-subscription
+  input: Open my subscription settings
+  assets: none
+  expect: [manual-ops]
+
+# ----------------------------------------------------- questions and chitchat
+- id: question-cost
+  input: How much does one generation cost?
+  expect: [question-handler]
+- id: question-formats
+  input: What file formats can you export?
+  expect: [question-handler]
+- id: question-kerning
+  input: What is kerning?
+  expect: [question-handler]
+- id: chitchat-thanks
+  input: thanks, that's great!
+  expect: [chitchat-handler]
+- id: chitchat-hello
+  input: hi there
+  assets: none
+  expect: [chitchat-handler]
+
+# ------------------------------------------------------------ multi-agent chains
+- id: chain-edit-then-manual-crop
+  input: Change the background to navy and then let me crop it
+  expect: [image-editor, manual-ops]
+- id: chain-edit-then-more
+  input: Make the headline bigger and give me 2 more versions
+  expect: [image-editor, image-generator]
+- id: chain-edit-then-slop
+  input: Remove the cup on the left, then check the result for AI artifacts
+  expect: [image-editor, slop-terminator]
+- id: chain-layer-and-critique
+  input: Separate the logo as a layer and tell me how to improve the layout
+  expect: [layering-agent, critic-agent]
+  unordered: true
+
+# ------------------------------------------------------------ out of scope
+- id: none-video
+  input: Turn this into a 10 second video with music
+  # custom-agent declines gracefully and offers alternatives; "none" also passes
+  expect_any: [[custom-agent], [none]]
+- id: none-print-shipping
+  input: Print 500 copies and ship them to my office
+  expect_any: [[custom-agent], [none]]
+- id: custom-caption
+  input: Write an Instagram caption with hashtags for this post
+  expect: [custom-agent]
+- id: custom-alt-text
+  input: Write alt text describing this image
+  expect: [custom-agent]
+
+# ------------------------------------------------------------- contradiction
+- id: clarify-contradiction
+  input: Make it minimalist and add confetti, balloons, stars, a banner and a ribbon
+  expect: [clarify]
+- id: clarify-gibberish
+  input: asdfgh
+  expect_any: [[clarify], [chitchat-handler], [none]]
+
+# --------------------------------------------------- replies to a pending task
+- id: pending-support-colours
+  input: what colours would go well here?
+  pending_task:
+    id: k7
+    goal: Change the colour of the car in a1 v1
+    requested: Which colour should the car be?
+    options: []
+    agent_id: image-editor
+  expect: [suggestion-agent]
+- id: pending-pick-option
+  input: the second
+  pending_task:
+    id: k7
+    goal: Change the colour of the car in a1 v1
+    requested: Which colour should the car be?
+    options: [warm sunset tones, cool blue dusk, neutral daylight]
+    agent_id: image-editor
+  expect: [pending]
+- id: pending-field-answer
+  input: 30% off, valid till Sunday
+  assets: none
+  pending_task:
+    id: g1
+    goal: Create an Instagram post for a Diwali sale
+    requested: What discount are you offering, and until when?
+    options: []
+    agent_id: image-generator
+  expect: [pending]
+- id: pending-side-question
+  input: what fonts do you usually use?
+  assets: none
+  pending_task:
+    id: g1
+    goal: Create an Instagram post for a Diwali sale
+    requested: What discount are you offering, and until when?
+    options: []
+    agent_id: image-generator
+  expect: [question-handler]
+- id: pending-cancel
+  input: actually forget it, don't make the post
+  assets: none
+  pending_task:
+    id: g1
+    goal: Create an Instagram post for a Diwali sale
+    requested: What discount are you offering, and until when?
+    options: []
+    agent_id: image-generator
+  expect: [cancel]
+- id: pending-new-task
+  input: Leave that, change the background of the coffee post to navy instead
+  pending_task:
+    id: g1
+    goal: Create an Instagram post for a Diwali sale
+    requested: What discount are you offering, and until when?
+    options: []
+    agent_id: image-generator
+  expect: [image-editor]

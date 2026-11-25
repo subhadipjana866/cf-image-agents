@@ -1,0 +1,10 @@
+# Tested against openai 2.28.0, google-genai 2.22.0, Pillow 12.1.1 on
+# Python 3.11. Floors, not pins -- see INTEGRATION.md for the tested set.
+openai>=2.28.0
+google-genai>=2.22.0
+Pillow>=11.0.0
+numpy>=1.26
+opencv-python-headless>=4.9
+# OPTIONAL -- typography_ocr.py only (pulls in PyTorch). Without it, text the
+# registration step cannot place is marked "unverified".
+# easyocr>=1.7.2

@@ -1,0 +1,9 @@
+# Copy to .dev.vars for local dev. In production: npx wrangler secret put OPENAI_API_KEY
+# Leave unset to fall back to Workers AI Llama 3.3.
+OPENAI_API_KEY=
+# Optional: route through Cloudflare AI Gateway, e.g.
+# OPENAI_BASE_URL=https://gateway.ai.cloudflare.com/v1/<account>/<gateway>/openai
+# Only create-more variations need Gemini.
+# GEMINI_API_KEY=
+# Local dev: call the agents service run by `npm run agents` instead of the Container binding.
+AGENTS_SERVICE_URL=http://localhost:8090

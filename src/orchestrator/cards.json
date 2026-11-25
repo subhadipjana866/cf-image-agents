@@ -1,0 +1,487 @@
+[
+ {
+  "view": {
+   "id": "image-generator",
+   "name": "Image Generator",
+   "version": "1.1.0",
+   "location": "internal",
+   "description": "Creates a new design from a brief and returns it as a new asset. The brief (design goal, platform, offer and other details) is settled with the user beforehand by the input collector; this agent writes the copy, sets the type and renders. For designs with overlaid text it outputs a layout specification, so that text is stored as editable blocks. Also creates further variations of an existing design, and redoes a design from its saved brief; both return new assets and leave the original unchanged.\n",
+   "skills": [
+    {
+     "id": "generate-design",
+     "summary": "Create a new design from a description.",
+     "prefill": [],
+     "examples": [
+      "Create a poster for a jazz night with a deep blue palette.",
+      "Generate a product banner for a coffee brand, 1200 by 628 pixels.",
+      "Design a square social post announcing a summer sale.",
+      "Create a minimalist logo concept for a bakery called Crumb."
+     ]
+    },
+    {
+     "id": "generate-from-reference",
+     "summary": "Create a new design in the style of a reference asset.",
+     "prefill": [],
+     "examples": [
+      "Create a new flyer in the style of a2 v1 for a different event.",
+      "Generate a companion banner that matches the look of a1 v3."
+     ]
+    },
+    {
+     "id": "generate-freeform",
+     "summary": "Create a design for a purpose outside the standard catalog of design goals.",
+     "prefill": [],
+     "examples": [
+      "Design a menu card for a cafe.",
+      "Create a wedding invitation with a floral border.",
+      "Make a certificate of completion for a coding course."
+     ]
+    },
+    {
+     "id": "regenerate",
+     "summary": "Redo a design from its saved brief, for a fresh take on the same request.",
+     "prefill": [],
+     "examples": [
+      "Regenerate a1 v1 from the same brief.",
+      "Try the poster a2 again from scratch, same text and goal.",
+      "Redo a1 with the new product photo the user attached."
+     ]
+    },
+    {
+     "id": "create-more",
+     "summary": "Create further variations of an existing design, keeping its brief and text but changing the composition. Each variation is a new asset.\n",
+     "prefill": [],
+     "examples": [
+      "Create three more variations of a1 v2.",
+      "Give the user another version of a3 v1 with a different layout.",
+      "Make two alternatives of a2 v1 in the same style."
+     ]
+    }
+   ],
+   "not_for": [
+    "Changing an existing design.",
+    "Judging or advising on a design.",
+    "Extracting part of a design."
+   ],
+   "required_inputs": [
+    {
+     "name": "brief",
+     "meaning": "What the design should show and be for.",
+     "required": true,
+     "sources": [
+      "task.goal",
+      "task.constraints",
+      "user"
+     ]
+    },
+    {
+     "name": "size",
+     "meaning": "Dimensions or aspect ratio.",
+     "required": false,
+     "default": "agent may choose",
+     "sources": [
+      "task.constraints"
+     ]
+    },
+    {
+     "name": "source_asset",
+     "meaning": "The design to vary or redo.",
+     "required": true,
+     "applies_when": "The task asks for variations or a redo of an existing design.",
+     "sources": [
+      "task.target_assets",
+      "session.focus_asset",
+      "user"
+     ]
+    },
+    {
+     "name": "logo",
+     "meaning": "The logo to place on the design.",
+     "required": false,
+     "default": "the brand kit logo if there is one, otherwise none",
+     "sources": [
+      "task.constraints",
+      "brand_kit",
+      "user"
+     ]
+    }
+   ],
+   "produces": {
+    "result": "new_image",
+    "detail": "A new asset at version 1, with its layout specification where text is overlaid."
+   },
+   "behaviour": {
+    "may_request_user_input": true,
+    "may_request_assistance": true,
+    "opens_interface": false,
+    "method": "generative",
+    "quality_gate": "always",
+    "cost_class": "high",
+    "typical_latency_seconds": "30-120",
+    "typical_assistance_needs": []
+   },
+   "observed": {
+    "success_rate": null,
+    "sample_size": 0
+   }
+  },
+  "needs_asset": false,
+  "required_inputs": [
+   {
+    "name": "brief",
+    "meaning": "What the design should show and be for.",
+    "required": true,
+    "sources": [
+     "task.goal",
+     "task.constraints",
+     "user"
+    ]
+   },
+   {
+    "name": "size",
+    "meaning": "Dimensions or aspect ratio.",
+    "required": false,
+    "default": "agent may choose",
+    "sources": [
+     "task.constraints"
+    ]
+   },
+   {
+    "name": "source_asset",
+    "meaning": "The design to vary or redo.",
+    "required": true,
+    "applies_when": "The task asks for variations or a redo of an existing design.",
+    "sources": [
+     "task.target_assets",
+     "session.focus_asset",
+     "user"
+    ]
+   },
+   {
+    "name": "logo",
+    "meaning": "The logo to place on the design.",
+    "required": false,
+    "default": "the brand kit logo if there is one, otherwise none",
+    "sources": [
+     "task.constraints",
+     "brand_kit",
+     "user"
+    ]
+   }
+  ]
+ },
+ {
+  "view": {
+   "id": "image-editor",
+   "name": "Image Editor",
+   "version": "1.1.0",
+   "location": "internal",
+   "description": "Changes an existing design and returns it as a new version. Handles changes to named elements, text blocks, regions, the background and the image as a whole, including several changes to the same target in one task. Works on flat images and on designs that already have layers. Also resizes a design for other platforms, raises its resolution, restores an earlier version and exports it in another file format.\n",
+   "skills": [
+    {
+     "id": "transform-element",
+     "summary": "Move, resize, rotate, flip, reorder or align an element.",
+     "prefill": [],
+     "examples": [
+      "Move the logo in a1 v2 to the top right corner.",
+      "Enlarge the product photo in a3 v1 by about a third.",
+      "Rotate the badge in a2 v4 so it sits level.",
+      "Bring the price tag in a5 v1 in front of the ribbon.",
+      "Centre the CTA button horizontally in a1 v3."
+     ]
+    },
+    {
+     "id": "edit-text-block",
+     "summary": "Change the wording or typography of a text block.",
+     "prefill": [],
+     "examples": [
+      "Enlarge the headline in a1 v1.",
+      "Change the headline in a2 v2 to read \"Summer Sale Ends Sunday\".",
+      "Set the body text in a4 v1 in a heavier weight and dark grey.",
+      "Make the text in a1 v1 bigger without it occupying more area.",
+      "Correct the spelling of \"Recieve\" in the tagline of a3 v2."
+     ]
+    },
+    {
+     "id": "restyle-element",
+     "summary": "Change an element's colour, fill, border, corner radius, opacity or shadow.",
+     "prefill": [],
+     "examples": [
+      "Make the CTA button in a1 v1 orange.",
+      "Round the corners of the photo frame in a2 v1 to 24 pixels.",
+      "Add a soft drop shadow under the product in a3 v3.",
+      "Make the banner strip in a4 v2 half transparent."
+     ]
+    },
+    {
+     "id": "change-image-content",
+     "summary": "Remove, add or replace an object or the background.",
+     "prefill": [],
+     "examples": [
+      "Remove the lamp from the left side of a2 v1.",
+      "Change the background of a1 v1 to navy blue.",
+      "Replace the sky in a5 v2 with a clear sunset sky.",
+      "Add a small potted plant on the desk in a3 v1."
+     ]
+    },
+    {
+     "id": "adjust-image",
+     "summary": "Adjust colour and tone of the whole image or a region.",
+     "prefill": [],
+     "examples": [
+      "Make a1 v2 warmer and slightly brighter.",
+      "Increase the contrast of the product area in a4 v1.",
+      "Convert a2 v3 to black and white.",
+      "Increase the brightness of a1 v2 by 20."
+     ]
+    },
+    {
+     "id": "change-canvas",
+     "summary": "Crop, resize, extend or reflow a design for another format.",
+     "prefill": [],
+     "examples": [
+      "Produce a square version of a3 v2 for Instagram.",
+      "Crop a1 v1 to remove the empty space on the right.",
+      "Extend a2 v1 to a 16:9 banner, continuing the background.",
+      "Make an Instagram story version and a LinkedIn post version of a1 v2."
+     ]
+    },
+    {
+     "id": "enhance-image",
+     "summary": "Raise the resolution or sharpness of a design.",
+     "prefill": [],
+     "examples": [
+      "Upscale a1 v2 for print.",
+      "Increase the resolution of a3 v1 to 4K.",
+      "Sharpen the blurry product photo in a2 v1."
+     ]
+    },
+    {
+     "id": "restore-version",
+     "summary": "Bring back an earlier version of a design as its newest version.",
+     "prefill": [],
+     "examples": [
+      "Undo the last change to a1, bringing back v2.",
+      "Go back to the first version of a3."
+     ]
+    },
+    {
+     "id": "export-format",
+     "summary": "Return a design in another file format.",
+     "prefill": [],
+     "examples": [
+      "Give the user a1 v3 as a transparent PNG.",
+      "Export a2 v1 as a JPG."
+     ]
+    }
+   ],
+   "not_for": [
+    "Creating a new design when no existing design is given.",
+    "Judging or scoring the quality of a design.",
+    "Advising what should be changed, or offering options for a change.",
+    "Extracting an element as a layer when the layer itself is the result wanted.",
+    "Finding and repairing generation artifacts when no specific change is requested.",
+    "Providing information about a design without changing it.",
+    "Changes the user wants to make by hand in a tool.",
+    "Creating further variations or alternative versions of a design.",
+    "Repairing malformed hands or faces, garbled lettering or other AI generation artifacts."
+   ],
+   "required_inputs": [
+    {
+     "name": "target_asset",
+     "meaning": "The design version to change.",
+     "required": true,
+     "sources": [
+      "task.target_assets",
+      "session.focus_asset",
+      "user"
+     ]
+    },
+    {
+     "name": "target",
+     "meaning": "The element, text block, region or whole image the change applies to.",
+     "required": true,
+     "sources": [
+      "task.goal",
+      "asset.text_blocks",
+      "asset.layers",
+      "asset.layout_spec",
+      "user"
+     ]
+    },
+    {
+     "name": "change",
+     "meaning": "What is to be different about the target.",
+     "required": true,
+     "sources": [
+      "task.goal",
+      "task.constraints",
+      "user"
+     ]
+    },
+    {
+     "name": "new_value",
+     "meaning": "The value to change to, when the change replaces one value with another: a colour, wording, a font, a position.\n",
+     "required": true,
+     "applies_when": "The change replaces a value and the task gives none.",
+     "sources": [
+      "task.constraints",
+      "task_record",
+      "user"
+     ],
+     "on_missing": "Ask the user, offering \"suggest some\" and \"you choose\"."
+    },
+    {
+     "name": "amount",
+     "meaning": "How much, for relative changes such as bigger, warmer or more rounded.",
+     "required": false,
+     "default": "agent may choose; the chosen amount is stated in the result",
+     "sources": [
+      "task.constraints"
+     ]
+    },
+    {
+     "name": "preserve",
+     "meaning": "Anything that must stay unchanged or limits the change.",
+     "required": false,
+     "default": "everything outside the target stays as it is",
+     "sources": [
+      "task.constraints"
+     ]
+    }
+   ],
+   "produces": {
+    "result": "changed_image",
+    "detail": "A new version of the target asset, a list of the changes made, and any values the agent chose itself.\n"
+   },
+   "behaviour": {
+    "may_request_user_input": true,
+    "may_request_assistance": true,
+    "opens_interface": false,
+    "method": "mixed",
+    "quality_gate": "generative_results_only",
+    "cost_class": "medium",
+    "typical_latency_seconds": "5-40",
+    "typical_assistance_needs": [
+     "An element or text block separated as a layer.",
+     "Options for a value the user delegated."
+    ]
+   },
+   "observed": {
+    "success_rate": null,
+    "median_latency_seconds": null,
+    "sample_size": 0
+   }
+  },
+  "needs_asset": true,
+  "required_inputs": [
+   {
+    "name": "target_asset",
+    "meaning": "The design version to change.",
+    "required": true,
+    "sources": [
+     "task.target_assets",
+     "session.focus_asset",
+     "user"
+    ]
+   },
+   {
+    "name": "target",
+    "meaning": "The element, text block, region or whole image the change applies to.",
+    "required": true,
+    "sources": [
+     "task.goal",
+     "asset.text_blocks",
+     "asset.layers",
+     "asset.layout_spec",
+     "user"
+    ]
+   },
+   {
+    "name": "change",
+    "meaning": "What is to be different about the target.",
+    "required": true,
+    "sources": [
+     "task.goal",
+     "task.constraints",
+     "user"
+    ]
+   },
+   {
+    "name": "new_value",
+    "meaning": "The value to change to, when the change replaces one value with another: a colour, wording, a font, a position.\n",
+    "required": true,
+    "applies_when": "The change replaces a value and the task gives none.",
+    "sources": [
+     "task.constraints",
+     "task_record",
+     "user"
+    ],
+    "on_missing": "Ask the user, offering \"suggest some\" and \"you choose\"."
+   },
+   {
+    "name": "amount",
+    "meaning": "How much, for relative changes such as bigger, warmer or more rounded.",
+    "required": false,
+    "default": "agent may choose; the chosen amount is stated in the result",
+    "sources": [
+     "task.constraints"
+    ]
+   },
+   {
+    "name": "preserve",
+    "meaning": "Anything that must stay unchanged or limits the change.",
+    "required": false,
+    "default": "everything outside the target stays as it is",
+    "sources": [
+     "task.constraints"
+    ]
+   }
+  ]
+ },
+ {
+  "view": {
+   "id": "chitchat-handler",
+   "name": "ChitChat Handler",
+   "version": "1.0.0",
+   "location": "internal",
+   "description": "Holds a brief social exchange: greetings, thanks, pleasantries.",
+   "skills": [
+    {
+     "id": "converse",
+     "summary": "Reply to small talk.",
+     "prefill": [],
+     "examples": [
+      "Respond to the user's greeting.",
+      "Acknowledge the user's thanks.",
+      "Reply to a casual remark that asks for nothing."
+     ]
+    }
+   ],
+   "not_for": [
+    "Any request for information about a design or the system.",
+    "Any task that creates, changes or assesses a design."
+   ],
+   "required_inputs": [],
+   "produces": {
+    "result": "conversation",
+    "detail": "A short text reply."
+   },
+   "behaviour": {
+    "may_request_user_input": false,
+    "may_request_assistance": false,
+    "opens_interface": false,
+    "method": "deterministic",
+    "quality_gate": "none",
+    "cost_class": "low",
+    "typical_assistance_needs": []
+   },
+   "observed": {
+    "success_rate": null,
+    "sample_size": 0
+   }
+  },
+  "needs_asset": false,
+  "required_inputs": []
+ }
+]

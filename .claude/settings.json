@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/save_chat_history.py\" 2>>\"$CLAUDE_PROJECT_DIR/.claude/hooks/.errors.log\" || true",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/save_chat_history.py\" 2>>\"$CLAUDE_PROJECT_DIR/.claude/hooks/.errors.log\" || true",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

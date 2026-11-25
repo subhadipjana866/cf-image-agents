@@ -1,0 +1,159 @@
+id: image-editor
+name: Image Editor
+version: 1.1.0
+location: internal
+
+description: >
+  Changes an existing design and returns it as a new version. Handles
+  changes to named elements, text blocks, regions, the background and the
+  image as a whole, including several changes to the same target in one
+  task. Works on flat images and on designs that already have layers.
+  Also resizes a design for other platforms, raises its resolution,
+  restores an earlier version and exports it in another file format.
+
+skills:
+  - id: transform-element
+    summary: Move, resize, rotate, flip, reorder or align an element.
+    examples:
+      - Move the logo in a1 v2 to the top right corner.
+      - Enlarge the product photo in a3 v1 by about a third.
+      - Rotate the badge in a2 v4 so it sits level.
+      - Bring the price tag in a5 v1 in front of the ribbon.
+      - Centre the CTA button horizontally in a1 v3.
+  - id: edit-text-block
+    summary: Change the wording or typography of a text block.
+    examples:
+      - Enlarge the headline in a1 v1.
+      - Change the headline in a2 v2 to read "Summer Sale Ends Sunday".
+      - Set the body text in a4 v1 in a heavier weight and dark grey.
+      - Make the text in a1 v1 bigger without it occupying more area.
+      - Correct the spelling of "Recieve" in the tagline of a3 v2.
+  - id: restyle-element
+    summary: Change an element's colour, fill, border, corner radius, opacity or shadow.
+    examples:
+      - Make the CTA button in a1 v1 orange.
+      - Round the corners of the photo frame in a2 v1 to 24 pixels.
+      - Add a soft drop shadow under the product in a3 v3.
+      - Make the banner strip in a4 v2 half transparent.
+  - id: change-image-content
+    summary: Remove, add or replace an object or the background.
+    examples:
+      - Remove the lamp from the left side of a2 v1.
+      - Change the background of a1 v1 to navy blue.
+      - Replace the sky in a5 v2 with a clear sunset sky.
+      - Add a small potted plant on the desk in a3 v1.
+  - id: adjust-image
+    summary: Adjust colour and tone of the whole image or a region.
+    examples:
+      - Make a1 v2 warmer and slightly brighter.
+      - Increase the contrast of the product area in a4 v1.
+      - Convert a2 v3 to black and white.
+      - Increase the brightness of a1 v2 by 20.
+  - id: change-canvas
+    summary: Crop, resize, extend or reflow a design for another format.
+    examples:
+      - Produce a square version of a3 v2 for Instagram.
+      - Crop a1 v1 to remove the empty space on the right.
+      - Extend a2 v1 to a 16:9 banner, continuing the background.
+      - Make an Instagram story version and a LinkedIn post version of a1 v2.
+  - id: enhance-image
+    summary: Raise the resolution or sharpness of a design.
+    examples:
+      - Upscale a1 v2 for print.
+      - Increase the resolution of a3 v1 to 4K.
+      - Sharpen the blurry product photo in a2 v1.
+  - id: restore-version
+    summary: Bring back an earlier version of a design as its newest version.
+    examples:
+      - Undo the last change to a1, bringing back v2.
+      - Go back to the first version of a3.
+  - id: export-format
+    summary: Return a design in another file format.
+    examples:
+      - Give the user a1 v3 as a transparent PNG.
+      - Export a2 v1 as a JPG.
+
+not_for:
+  - Creating a new design when no existing design is given.
+  - Judging or scoring the quality of a design.
+  - Advising what should be changed, or offering options for a change.
+  - Extracting an element as a layer when the layer itself is the result wanted.
+  - Finding and repairing generation artifacts when no specific change is requested.
+  - Providing information about a design without changing it.
+  - Changes the user wants to make by hand in a tool.
+  - Creating further variations or alternative versions of a design.
+  - Repairing malformed hands or faces, garbled lettering or other AI generation artifacts.
+
+required_inputs:
+  - name: target_asset
+    meaning: The design version to change.
+    required: true
+    sources: [task.target_assets, session.focus_asset, user]
+  - name: target
+    meaning: The element, text block, region or whole image the change applies to.
+    required: true
+    sources: [task.goal, asset.text_blocks, asset.layers, asset.layout_spec, user]
+  - name: change
+    meaning: What is to be different about the target.
+    required: true
+    sources: [task.goal, task.constraints, user]
+  - name: new_value
+    meaning: >
+      The value to change to, when the change replaces one value with
+      another: a colour, wording, a font, a position.
+    required: true
+    applies_when: The change replaces a value and the task gives none.
+    sources: [task.constraints, task_record, user]
+    on_missing: Ask the user, offering "suggest some" and "you choose".
+  - name: amount
+    meaning: How much, for relative changes such as bigger, warmer or more rounded.
+    required: false
+    default: agent may choose; the chosen amount is stated in the result
+    sources: [task.constraints]
+  - name: preserve
+    meaning: Anything that must stay unchanged or limits the change.
+    required: false
+    default: everything outside the target stays as it is
+    sources: [task.constraints]
+
+produces:
+  result: changed_image
+  detail: >
+    A new version of the target asset, a list of the changes made, and any
+    values the agent chose itself.
+
+behaviour:
+  may_request_user_input: true
+  may_request_assistance: true
+  typical_assistance_needs:
+    - An element or text block separated as a layer.
+    - Options for a value the user delegated.
+  readiness_model: true
+  batchable: true
+  method: mixed
+  quality_gate: generative_results_only
+  cost_class: medium
+  typical_latency_seconds: 5-40
+
+observed:
+  success_rate: null
+  median_latency_seconds: null
+  sample_size: 0
+
+operational:
+  handler: image_agents.agents.editor.ImageEditorAgent
+  step_timeout_seconds: 120
+  max_retries: 1
+  owner: design-agents-team
+  wraps: [editIntentClassifier, editPrompts, gptImageExecutor, bananaProExecutor, bananaExecutor,
+          fluxExecutor, editStyleSwitch, expandManager, services.upscaleImage]
+  tools:
+    planning: [classify_edit_intent, build_edit_prompt, detect_style_switch, check_executability,
+               check_brand_conflict]
+    generative_backend: [gpt_image_edit, gemini_pro_image_edit, nano_banana_edit, flux_kontext_edit,
+                         mask_from_region, label_extra_images, insert_logo]
+    deterministic: [crop, resize, round_corners, adjust, grayscale, recolor_region, restore_version,
+                    convert_format]
+    text: [retypeset_text_block, ocr_read_text]
+    canvas: [parse_target_platforms, same_ratio_resize, outpaint_expand, fit_exact_size,
+             batch_multi_target, upscale_image]

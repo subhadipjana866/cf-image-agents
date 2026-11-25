@@ -1,0 +1,33 @@
+id: chitchat-handler
+name: ChitChat Handler
+version: 1.0.0
+location: internal
+description: 'Holds a brief social exchange: greetings, thanks, pleasantries.'
+skills:
+- id: converse
+  summary: Reply to small talk.
+  examples:
+  - Respond to the user's greeting.
+  - Acknowledge the user's thanks.
+  - Reply to a casual remark that asks for nothing.
+not_for:
+- Any request for information about a design or the system.
+- Any task that creates, changes or assesses a design.
+required_inputs: []
+produces:
+  result: conversation
+  detail: A short text reply.
+behaviour:
+  may_request_user_input: false
+  may_request_assistance: false
+  readiness_model: false
+  method: deterministic
+  quality_gate: none
+  cost_class: low
+observed:
+  success_rate: null
+  sample_size: 0
+operational:
+  handler: your_package.chitchat_subgraph
+  step_timeout_seconds: 60
+  max_retries: 1

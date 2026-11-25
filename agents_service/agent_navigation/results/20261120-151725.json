@@ -1,0 +1,620 @@
+{
+  "models": "default=openai:gpt-5.4",
+  "usage": {
+    "calls": 26,
+    "input_tokens": 161637,
+    "output_tokens": 6945,
+    "seconds": 101.3
+  },
+  "results": [
+    {
+      "case": {
+        "id": "slop-hands",
+        "input": "Her hands look weird, fix them",
+        "assets": "person",
+        "expect": [
+          "slop-terminator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new request to edit the current focus image, not a reply to any pending task because none exists. I read \"fix them\" as a direct request to correct the woman's hands in asset a1 version 1, likely addressing distorted or anatomically incorrect hands while leaving the rest of the ad unchanged.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Correct the woman's hands in asset a1 version 1 so they look natural and anatomically plausible.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "slop-terminator",
+            "confidence": "high",
+            "analysis": "The task needs a changed image that specifically repairs AI generation artifacts: unnatural hands in an AI-generated photo ad. The strongest fit is Slop Terminator because its card explicitly covers malformed hands and artifact repair, while Image Editor is explicitly not for repairing malformed hands or other AI generation artifacts.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "slop-terminator"
+        ]
+      },
+      "got": [
+        "slop-terminator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "slop-check",
+        "input": "Check this for AI artifacts",
+        "expect": [
+          "slop-terminator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task about the image currently in focus, asset a1 version 1. The user is asking for an assessment of whether the image shows AI-generation artifacts, rather than asking for any edits.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Assess asset a1 version 1 for visible AI-generation artifacts and report any issues found.",
+            "desired_result": "quality_assessment",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "slop-terminator",
+            "confidence": "high",
+            "analysis": "The task needs an evaluation of a generated image specifically for visible AI-generation artifacts, with a report and no edit. The strongest candidates are Slop Terminator, which explicitly detects artifacts and can report them, and Image Evaluator, but Image Evaluator is not for finding AI generation artifacts. That not_for line is decisive.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "slop-terminator"
+        ]
+      },
+      "got": [
+        "slop-terminator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "critic-improve",
+        "input": "How can I make this design better?",
+        "expect": [
+          "critic-agent"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task asking for advice about the focused design rather than a request to directly edit it. With no pending or active tasks, the conservative reading is a request for design feedback on asset a1 version 1.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Assess the design of asset a1 version 1 and provide actionable advice on how to improve it. Consider the overall Instagram post, including the headline \"Grand Opening\", the body text \"Saturday 10am, 12 Baker Street\", and the CTA \"Visit us\".",
+            "desired_result": "design_advice",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "critic-agent",
+            "confidence": "high",
+            "analysis": "The task needs design_advice: actionable critique and recommendations for improving an existing design without changing it. Critic Agent directly covers this with examples about improving a design, explaining why it looks off, and proposing executable changes; Image Evaluator is a nearby candidate but its card is for scoring/reporting defects and explicitly not for suggesting improvements.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "critic-agent"
+        ]
+      },
+      "got": [
+        "critic-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "critic-unbalanced",
+        "input": "Why does this look so unbalanced?",
+        "expect": [
+          "critic-agent"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "The user is commenting on the focused image asset a1 version 1 and asking why it appears unbalanced. With no pending or active tasks, this is best read conservatively as a request for critique rather than an instruction to change the image.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Assess the composition of asset a1 version 1 and explain why it looks unbalanced.",
+            "desired_result": "design_advice",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "critic-agent",
+            "confidence": "high",
+            "analysis": "The task needs design advice about an existing design: explain why the composition looks unbalanced and propose critique-oriented reasoning, matching Critic Agent's skill examples such as explaining why a design looks off or unbalanced and what would fix it. Image Evaluator is a nearby candidate, but its card is for scoring quality and listing defects and is explicitly not for explaining why a design looks wrong or unappealing to the user.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "critic-agent"
+        ]
+      },
+      "got": [
+        "critic-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "critic-dislike",
+        "input": "I don't like it",
+        "expect_any": [
+          [
+            "critic-agent"
+          ],
+          [
+            "clarify"
+          ]
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "The user is commenting on the currently focused image asset a1 version 1 without specifying what should change. With no pending or active task and no concrete edit request, the most conservative reading is that they want guidance on what is not working about the design before any changes are made.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Assess the overall design of asset a1 version 1, the AI-generated Instagram post for a coffee shop grand opening, and identify what may be causing the user to dislike it.",
+            "desired_result": "design_advice",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "critic-agent",
+            "confidence": "high",
+            "analysis": "The task needs design_advice about what is wrong with the current design and what may be causing the user's dislike, not a quality score or an edit. Critic Agent directly covers this with examples including explaining why a design looks off and responding when the user dislikes a design without naming what to change. Image Evaluator was a serious candidate only superficially, but its card is for scoring defects and explicitly not for explaining why a design looks wrong or unappealing.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "critic-agent"
+        ]
+      },
+      "got": [
+        "critic-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "eval-score",
+        "input": "Rate this design out of 10",
+        "expect": [
+          "image-evaluator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task asking for an evaluation of the currently focused design, not a request to change it. I interpret 'this design' as the in-focus asset a1 version 1 and the desired outcome as a scored quality assessment.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Assess the quality of asset a1 version 1, the AI-generated Instagram post for a coffee shop grand opening, and provide a rating out of 10.",
+            "desired_result": "quality_assessment",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-evaluator",
+            "confidence": "high",
+            "analysis": "The task needs a quality assessment with a rating out of 10 for an existing design. Image Evaluator directly matches this result and its examples include evaluating and scoring a design's overall execution; Critic Agent is close in topic but is specifically for improvement advice, not scoring quality.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-evaluator"
+        ]
+      },
+      "got": [
+        "image-evaluator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "eval-is-it-good",
+        "input": "Is this good?",
+        "expect_any": [
+          [
+            "image-evaluator"
+          ],
+          [
+            "critic-agent"
+          ]
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "The user is reacting to the focused image asset and asking for an evaluation rather than specifying an edit. With no pending or active task, the most conservative reading is a request to assess the quality of the current Instagram post design and say whether it works well.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Assess the overall quality and effectiveness of asset a1 version 1, an AI-generated Instagram post for a coffee shop grand opening, and determine whether it works well as a design.",
+            "desired_result": "quality_assessment",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-evaluator",
+            "confidence": "high",
+            "analysis": "This task needs a quality_assessment of an existing design, including whether it works well overall as an Instagram post. The strongest match is Image Evaluator, whose skill examples include evaluating quality, scoring execution, and judging whether a design meets its brief; Critic Agent is a nearby candidate but is for improvement advice rather than scoring or defect reporting.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-evaluator"
+        ]
+      },
+      "got": [
+        "image-evaluator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "chitchat-thanks",
+        "input": "thanks, that's great!",
+        "expect": [
+          "chitchat-handler"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a brief acknowledgement of prior work, not a request to create, edit, assess, or provide information. There is no pending or active task to resolve, so the most conservative reading is a conversational exchange with no image work requested.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Continue the brief exchange by acknowledging the user's thanks.",
+            "desired_result": "conversation",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "chitchat-handler",
+            "confidence": "high",
+            "analysis": "The task needs a short conversational reply acknowledging thanks, with desired_result \"conversation\". ChitChat Handler directly covers brief social exchanges and its examples include acknowledging the user's thanks; other candidates are for design, image, or information tasks and are ruled out by fit or not_for lines.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "chitchat-handler"
+        ]
+      },
+      "got": [
+        "chitchat-handler"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "chitchat-hello",
+        "input": "hi there",
+        "assets": "none",
+        "expect": [
+          "chitchat-handler"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a casual greeting with no task request, no pending task to answer, and no unfinished work to amend or cancel. I read it as a brief conversational exchange rather than an image, account, or tool-related request.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Hold a brief conversational exchange by acknowledging the user's greeting.",
+            "desired_result": "conversation",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "chitchat-handler",
+            "confidence": "high",
+            "analysis": "The task needs a brief social reply with desired_result \"conversation\". ChitChat Handler directly covers greetings and thanks, and its examples explicitly include responding to a user's greeting; Question Handler is not for small talk with no information need. The clear match is ChitChat Handler.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "chitchat-handler"
+        ]
+      },
+      "got": [
+        "chitchat-handler"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "chain-edit-then-manual-crop",
+        "input": "Change the background to navy and then let me crop it",
+        "expect": [
+          "image-editor",
+          "manual-ops"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new request about the current focus image, asset a1 version 1. The user wants the system to first edit the image background to navy, then open a cropping interface so they can perform the crop themselves.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Change the background of asset a1 version 1 to navy.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed image: specifically changing the background colour of existing asset a1 v1 to navy. Image Editor directly covers changing the background and returns a new version; other listed candidates either advise, evaluate, generate new designs, or handle artifact repair rather than a specific requested edit.",
+            "missing_inputs": [],
+            "capability_gap": null
+          },
+          {
+            "id": "T2",
+            "goal": "Open the crop tool on the edited version of asset a1 so the user can crop it themselves.",
+            "desired_result": "changed_image",
+            "performed_by": "user",
+            "depends_on": [
+              "T1"
+            ],
+            "supports_task_id": null,
+            "decision": "missing_inputs",
+            "agent_id": "manual-ops",
+            "confidence": "high",
+            "analysis": "This task is performed_by user and asks to open the crop tool so the user can crop the image themselves. ManualOps is the only candidate and its open-crop-tool skill exactly matches, but the task specifies the edited version of a1 while only a1 v1 is currently identified and the task depends on T1 to create the correct target version.",
+            "missing_inputs": [
+              "the edited target asset version produced by T1, so the crop tool opens on the changed image rather than on a1 v1"
+            ],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor",
+          "manual-ops"
+        ]
+      },
+      "got": [
+        "image-editor",
+        "manual-ops"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "chain-edit-then-more",
+        "input": "Make the headline bigger and give me 2 more versions",
+        "expect": [
+          "image-editor",
+          "image-generator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task on the in-focus image asset a1 version 1, since there is no pending or active task. The user is asking for one edit to the existing image's headline text and also for two additional alternative versions of the image reflecting that headline change.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Make the headline text block tb1 ('Grand Opening') bigger in asset a1 version 1.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "This task needs a changed image: enlarge an existing text block in asset a1 v1. Image Editor directly covers editing text blocks with examples like enlarging a headline, and no other candidate both changes the image and fits the requested edit.",
+            "missing_inputs": [],
+            "capability_gap": null
+          },
+          {
+            "id": "T2",
+            "goal": "Create 2 additional edited versions of asset a1 version 1 with the headline text block tb1 ('Grand Opening') made bigger.",
+            "desired_result": "edit_options",
+            "performed_by": "system",
+            "depends_on": [
+              "T1"
+            ],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-generator",
+            "confidence": "high",
+            "analysis": "This task asks for two additional alternative edited versions of an existing design, each with the headline made bigger. Image Generator is the best fit because its card explicitly covers creating further variations or alternative versions of an existing design, whereas Image Editor is explicitly not for creating further variations or alternative versions.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor",
+          "image-generator"
+        ]
+      },
+      "got": [
+        "image-editor",
+        "image-generator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "chain-edit-then-slop",
+        "input": "Remove the cup on the left, then check the result for AI artifacts",
+        "expect": [
+          "image-editor",
+          "slop-terminator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new multi-step request about the focused image asset a1 version 1. The user wants an edit first and then a separate quality check on the edited result, specifically for AI artifacts.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Remove the cup on the left from asset a1 version 1.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed image that removes a specific object from an existing asset. Image Editor directly covers removing an object or background as a change to existing design content, while Slop Terminator is limited to repairing AI artifacts and Layering Agent only extracts elements rather than removing them.",
+            "missing_inputs": [],
+            "capability_gap": null
+          },
+          {
+            "id": "T2",
+            "goal": "Assess the edited result of asset a1 version 1 after the left cup has been removed, and check it for AI artifacts.",
+            "desired_result": "quality_assessment",
+            "performed_by": "system",
+            "depends_on": [
+              "T1"
+            ],
+            "supports_task_id": null,
+            "decision": "no_capable_agent",
+            "agent_id": null,
+            "confidence": "high",
+            "analysis": "The task asks for an assessment of the edited result and specifically to check it for AI artifacts. Image Evaluator matches the requested result kind, quality_assessment, but its card explicitly excludes finding AI generation artifacts; Slop Terminator can detect artifacts but produces a defect list or changed image rather than a quality assessment, so no single agent covers the whole task as written.",
+            "missing_inputs": [],
+            "capability_gap": "No agent in the registry can both assess the edited result as a quality assessment and check that same result for AI generation artifacts within one task."
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor",
+          "none"
+        ]
+      },
+      "got": [
+        "image-editor",
+        "none"
+      ],
+      "ok": false
+    },
+    {
+      "case": {
+        "id": "chain-layer-and-critique",
+        "input": "Separate the logo as a layer and tell me how to improve the layout",
+        "expect": [
+          "layering-agent",
+          "critic-agent"
+        ],
+        "unordered": true
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new multi-part request about the in-focus image asset a1 version 1. The user wants one image-editing action and one separate advisory result: extract the logo into its own layer, and provide layout improvement advice for the same Instagram post.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Extract the logo from asset a1 version 1 as a separate layer.",
+            "desired_result": "extracted_element",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "layering-agent",
+            "confidence": "high",
+            "analysis": "The task needs an extracted element as the result: the logo from a1 v1 separated as its own layer. Layering Agent directly covers this with examples like extracting a logo as a separate layer, while Image Editor is explicitly not for extracting an element as a layer when the layer itself is the result wanted.",
+            "missing_inputs": [],
+            "capability_gap": null
+          },
+          {
+            "id": "T2",
+            "goal": "Assess the layout of asset a1 version 1 and provide advice on how to improve it.",
+            "desired_result": "design_advice",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "critic-agent",
+            "confidence": "high",
+            "analysis": "The task needs design advice about improving layout, not a score and not an automatic edit. Critic Agent directly fits because it proposes executable design improvements and covers explaining what looks unbalanced and what to change; Image Evaluator is not for suggesting improvements, and Suggestion Agent is not for general critique when no specific contemplated change is in view.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "layering-agent",
+          "critic-agent"
+        ]
+      },
+      "got": [
+        "layering-agent",
+        "critic-agent"
+      ],
+      "ok": true
+    }
+  ]
+}

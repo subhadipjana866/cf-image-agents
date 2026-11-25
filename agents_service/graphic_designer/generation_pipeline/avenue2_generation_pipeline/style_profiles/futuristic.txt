@@ -1,0 +1,188 @@
+STYLE_NAME: Futuristic
+STYLE_DESCRIPTION: Sci-fi editorial for the near-future world. Futuristic design draws
+from cyberpunk aesthetics, HUD interfaces, aerospace engineering, and speculative
+technology — but always in service of product storytelling. The visual language says:
+this object belongs to a world that is faster, smarter, and more powerful than today.
+
+==============================================================================
+COLOR_SYSTEM
+==============================================================================
+PHILOSOPHY: Dark foundations with precision-lit neon accents. The colour system
+references digital displays, laser optics, and deep space — high luminance against
+extreme darkness creates the characteristic "Futuristic" glow.
+
+PRIMARY PALETTE (Signature Neon):
+  - Void Black:            #020208  (primary background — near-true black with blue undertone)
+  - Panel Charcoal:        #0C0E18  (secondary surface — slightly lighter for depth layering)
+  - Electric Cyan:         #00F5FF  (primary accent — neon glow, outlines, UI elements)
+  - Plasma Violet:         #9B00FF  (secondary accent — energy fields, gradient elements)
+  - Chrome White:          #E8EEFF  (primary typography on dark — cool-tinted white)
+
+EXTENDED PALETTE (select ONE per composition):
+  - Laser Red:             #FF2D55  (danger, speed, limited edition energy)
+  - Acid Lime:             #B0FF00  (tech-forward, sustainability, bio-tech)
+  - Solar Orange:          #FF8C00  (warmth-tech hybrid, accessible futurism)
+  - Ice Blue:              #80D8FF  (clean tech, medical, aerospace)
+
+GRADIENT LANGUAGE:
+  - "Dark Matter" gradient: Void Black (#020208) → Panel Charcoal (#0C0E18) — for backgrounds
+  - "Energy Pulse" gradient: Electric Cyan (#00F5FF) → Plasma Violet (#9B00FF) — for accents
+  - "Neon Edge" glow: a soft 15–25px outer glow in the primary neon colour applied
+    to edges of key UI elements, product outlines, or typographic anchors
+
+TYPOGRAPHY COLOURS:
+  - Primary headline: Chrome White (#E8EEFF) for maximum readability on dark
+  - Accent label: Electric Cyan (#00F5FF) with optional subtle glow
+  - Secondary text: #6A7A9B (muted blue-grey for hierarchy and readability)
+  - Price / date callout: gradient from Electric Cyan to Plasma Violet applied horizontally
+
+FORBIDDEN COLOUR BEHAVIOURS:
+  - No warm colour temperatures (no yellows, oranges, reds unless as a designated accent)
+  - No desaturated or earth-toned palettes
+  - No light backgrounds (no white, cream, beige, light grey)
+  - No pastel tints
+  - No more than 2 neon accent colours per composition
+
+==============================================================================
+MATERIAL_VOCABULARY
+==============================================================================
+SURFACES:
+  - Anodised matte black metal — primary product surface treatment for tech products
+  - Polished chrome / mirror-finish metal — for product accents, reflective panels
+  - Dark carbon fibre weave — structural texture for premium tech/automotive-adjacent products
+  - Holographic foil surface — subtle rainbow iridescence for labels or packaging
+  - Cracked tempered glass / fractured acrylic — for energy-burst or impact visual effects
+  - Liquid metal / mercury pool — for conceptual or lifestyle products
+
+BACKGROUND ELEMENTS:
+  - Grid overlay: fine 1px lines in Electric Cyan at 8–12% opacity forming a perspective grid
+  - Particle fields: scattered fine dot clusters (1–2px) in the primary neon colour at low opacity
+  - Circuit trace lines: thin branching lines suggesting PCB trace routes
+  - Data streams: vertical or diagonal bands of tiny text characters (matrix-style) at 5% opacity
+  - Volumetric light cone: single beam of light entering frame at 45° from upper corner
+
+PRODUCT TREATMENT:
+  - Products are rendered against dark backgrounds with edge-lighting in the primary neon colour
+  - Specular highlights are sharp and precise (unlike Luxury's soft diffusion)
+  - Products may have holographic label elements or UI-style overlay graphics
+  - Floating mid-air is strongly preferred — no surface contact or grounding
+
+==============================================================================
+LIGHTING_ENVIRONMENT
+==============================================================================
+PRIMARY LIGHT SOURCE: Edge-lighting from below or behind the product in Electric Cyan (#00F5FF)
+  — creates the characteristic "backlit" or "rim-lit" sci-fi appearance.
+SECONDARY LIGHT: Subtle overhead key light in Chrome White to reveal product form.
+ACCENT LIGHT: Plasma Violet (#9B00FF) fill from the opposite side of the cyan rim —
+  creates the dual-neon chromatic aberration effect.
+SHADOW STYLE: Hard, crisp shadows cast in dark blue-black on any surface contact.
+  The shadow has a very subtle neon colour fringe where it meets the light source.
+GLOW EFFECTS: Products and key typographic elements emit a soft outer glow
+  (blur radius 15–30px) in their primary neon colour — this is the signature effect.
+BACKGROUND ATMOSPHERE: Deep space darkness with subtle volumetric haze in the far field,
+  suggesting atmospheric depth without a tangible environment.
+COLOUR TEMPERATURE: Cool/neutral (6500–8000K — daylight to overcast sky range).
+  All light sources trend cool-to-blue.
+FORBIDDEN LIGHTING:
+  - No warm tungsten or candlelight lighting
+  - No soft, diffuse, haze-free studio lighting
+  - No flat even illumination without neon accent sources
+  - No hard white specular flares without colour tinting
+
+==============================================================================
+TYPOGRAPHIC_PERSONALITY
+==============================================================================
+PRIMARY TYPEFACE CHARACTER: Geometric sans-serif or technical/industrial sans.
+  Think Eurostile Extended, Rajdhani, Orbitron, or equivalent space-age geometric.
+  - Weight: Regular to SemiBold — heavier weights used only for single-word impact headlines
+  - Case: ALL CAPS strongly preferred for headlines and subheads
+  - Tracking: Tight to normal (0 to 0.05em); never wide-tracked for primary text
+  - Character: Right-angle terminals, wide proportions, efficient legibility at distance
+
+SECONDARY TYPEFACE CHARACTER: Monospace or technical grid typeface — for data labels,
+  coordinates, version numbers, technical specifications.
+  - Used for UI-layer text elements (dates, stats, system labels)
+  - Colour: Electric Cyan or muted #6A7A9B
+
+ACCENT TYPOGRAPHY TRICKS (Futuristic-specific):
+  - Single letter or word with a neon glow treatment
+  - Text with a horizontal scan-line texture (fine horizontal lines at 20% opacity)
+  - Stencil cutout text revealing a gradient behind
+  - "Glitch" effect on secondary text: offset duplicate in a contrasting neon colour
+    shifted 2–4px from the original (used very sparingly, one element maximum)
+
+TYPOGRAPHIC RULES:
+  - All text must be legible — glow effects cannot reduce readability
+  - No serif typefaces (unless brand identity requires it)
+  - No handwriting or script fonts
+  - No warm-coloured text
+
+==============================================================================
+SPATIAL_ATMOSPHERE
+==============================================================================
+COMPOSITION FEEL: Infinite depth. The design should feel like a portal to a larger
+  space — a window into a technological world that extends beyond the canvas edges.
+DEPTH OF FIELD: Product is in sharp focus; background elements exist at multiple
+  depth planes with the farthest at 30–50% blur.
+GRID SYSTEM: An underlying perspective grid reinforces the sense of dimensional space.
+SCALE: Hero products feel monumental — scale them larger than real-world intuition
+  suggests. This creates the "product as architecture" quality of Futuristic design.
+ASYMMETRY: Strong diagonal compositions preferred over centred/symmetrical ones.
+  Energy should flow from lower-left to upper-right (or the reverse).
+
+==============================================================================
+DECORATIVE_LANGUAGE
+==============================================================================
+PERMITTED MOTIFS:
+  - Hexagonal grid pattern (honeycomb mesh) at very low opacity as background texture
+  - Circuit board trace patterns
+  - Concentric ring targets or reticle crosshair overlays (subtle, at 10–20% opacity)
+  - Thin neon line borders or frame elements at canvas edges
+  - "Energy ring" — concentric circular neon lines radiating from behind the product
+  - Small UI data readout panels (displaying fictional specs, coordinates, or system labels)
+  - Particle dot fields scattered across the background at low opacity
+
+SIGNATURE MOVE: The "neon edge explosion" — a starburst of fine neon lines
+  radiating from the hero product's centre point in both primary accent colours.
+
+FORBIDDEN MOTIFS:
+  - Organic natural forms (flowers, leaves, wood, stone)
+  - Hand-drawn or sketch aesthetics
+  - Gold or warm metallic finishes
+  - Memphis-style solid geometric shapes
+  - Luxury restraint aesthetic cues
+  - Any element suggesting softness, warmth, or nature
+
+==============================================================================
+EMOTIONAL_SIGNATURE
+==============================================================================
+TARGET EMOTION: Awe and anticipation. The viewer should feel they are encountering
+  something that exists slightly beyond the current moment — powerful, precise, inevitable.
+BRAND ARCHETYPES: The Magician, The Hero — transformation through technology.
+PACING: Dynamic but controlled. The eye is guided by the light sources.
+ANTI-EMOTION: Never warm, never nostalgic, never casual or approachable.
+
+==============================================================================
+HARD_BANS
+==============================================================================
+The following elements must NEVER appear in any Futuristic-style generation.
+These feed into the image generation API as mandatory negative_prompt parameters.
+
+- warm colour temperature lighting, candlelight, golden hour, warm tungsten glow
+- white or light coloured backgrounds, cream backgrounds, beige backgrounds
+- earth tones, muted desaturated palettes, pastel colours
+- organic natural elements (flowers, leaves, wood grain, stone, grass, sky)
+- soft diffuse lighting without neon accents
+- serif typefaces (unless explicit brand requirement)
+- handwriting or script fonts
+- Memphis-style geometric pattern fills
+- luxury minimalism aesthetic (extreme whitespace, hairline rules, silence)
+- warm metallic gold or brass surfaces
+- photorealistic outdoor environments (parks, streets, nature)
+- vintage or retro aesthetic cues
+- watermarks, photo credit text, copyright overlays
+- jpeg compression artifacts, pixelation, low resolution noise
+- overexposed areas, blown highlights
+- distorted anatomy, extra limbs, malformed hands
+- duplicate product instances
+- blurry text or illegible typography

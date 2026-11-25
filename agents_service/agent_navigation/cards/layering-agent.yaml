@@ -1,0 +1,68 @@
+id: layering-agent
+name: Layering Agent
+version: 1.2.0
+location: internal
+description: Turns an existing design into separate layers so its parts can be moved and edited
+  individually. Separates named elements or text blocks, the parts inside boxes the user drew,
+  or, when the request names nothing ("make layers", "create layers", "split it into layers"),
+  asks the user which elements to separate. Each layer has a mask and is linked to the version
+  it came from. Also cuts the main subject out of its background when the cut-out itself is the
+  result wanted.
+skills:
+- id: layer-design
+  summary: Turn a design into layers; asks which elements when none are named.
+  examples:
+  - Make layers of a1 v1.
+  - Create layers from the current design.
+  - Split a2 v3 into layers so the user can edit each part.
+  - Separate the regions the user drew boxes around in a1 v2 into layers.
+- id: extract-layer
+  summary: Separate an element or text block as a layer.
+  examples:
+  - Extract the logo in a1 v2 as a separate layer.
+  - Separate the headline text block of a3 v1 as an editable text layer.
+  - Isolate the product in a2 v1 from its background as a layer.
+  - Provide the CTA button of a1 v4 as a layer with its mask.
+  - Cut the product out of a2 v1 so the user gets it on a transparent background.
+  - Make all the text in a1 v1 editable as separate layers.
+not_for:
+- Changing the element once it is separated.
+- Removing an element from a design.
+- Creating new content.
+required_inputs:
+- name: target_asset
+  meaning: The design version to work on.
+  required: true
+  sources:
+  - task.target_assets
+  - session.focus_asset
+  - user
+- name: element
+  meaning: The element to separate (the agent asks the user when none is named, as today).
+  required: false
+  sources:
+  - task.goal
+  - asset.text_blocks
+  - user
+produces:
+  result: extracted_element
+  detail: A layer record with mask and properties, attached to the asset version.
+behaviour:
+  may_request_user_input: true
+  may_request_assistance: false
+  readiness_model: false
+  method: mixed
+  quality_gate: none
+  cost_class: medium
+observed:
+  success_rate: null
+  sample_size: 0
+operational:
+  handler: graphic_designer.agents.layering.build_layering_agent
+  step_timeout_seconds: 180
+  max_retries: 1
+  # Runs the existing layering code unchanged: nodes._layeringTargetsFromPrompt, then
+  # subgraphs/layering.py bboxGenerator | manualLayering -> segmentGenerator -> pasteBackTexts
+  # (layers.detection, layers.segmentation on the GPU server).
+  wraps: [layeringManager, layeringSubgraph, layers.detection, layers.segmentation]
+  tools: [separate_layers, ask_layer_targets, ask_user]

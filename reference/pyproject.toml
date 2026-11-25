@@ -1,0 +1,35 @@
+[project]
+name = "image-agents"
+version = "0.1.0"
+description = "Task-agent orchestrator for image creation and editing, built on LangGraph"
+requires-python = ">=3.10"
+dependencies = [
+    "langgraph>=1.0",
+    "pydantic>=2.6",
+    "pyyaml>=6.0",
+    "pillow>=10.0",
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+# A real chat model for the orchestrator steps.
+llm = ["langchain>=1.0"]
+# An OCR engine for text detection (also needs the tesseract binary).
+ocr = ["pytesseract>=0.3.10"]
+# Durable checkpoints for production.
+postgres = ["langgraph-checkpoint-postgres"]
+dev = ["pytest>=8.0"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+image_agents = ["prompts/*.txt", "cards/*.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

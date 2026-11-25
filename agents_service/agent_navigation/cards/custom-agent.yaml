@@ -1,0 +1,62 @@
+id: custom-agent
+name: Custom Agent
+version: 1.0.0
+location: internal
+description: >
+  Handles any request, or part of a request, that no other agent covers, with a direct
+  language-model answer: writing text around a design (captions, hashtags, alt text,
+  ad copy, translations), brainstorming campaign ideas, general questions outside graphic
+  design, and requests the system cannot carry out (video, animation, printing), which it
+  declines gracefully while offering what is possible instead. Returns text only; it never
+  creates or changes an image.
+skills:
+- id: write-text
+  summary: Write text that goes with a design, without changing the design.
+  examples:
+  - Write an Instagram caption with hashtags for a1 v2.
+  - Write alt text describing a1 v1 for accessibility.
+  - Translate the tagline of a3 v1 into Spanish for the post description.
+  - Draft a short email announcing the sale shown in a2 v1.
+- id: brainstorm
+  summary: Generate ideas or plans around the user's marketing or design goals.
+  examples:
+  - Suggest five campaign ideas for a bakery's grand opening.
+  - Propose a posting schedule for a week of festive sale posts.
+- id: answer-anything-else
+  summary: Answer a request no other agent covers, or explain gracefully that it cannot be done.
+  examples:
+  - Explain that turning a1 v1 into a video is not supported and suggest what can be done instead.
+  - Answer a general question unrelated to graphic design.
+not_for:
+- Creating a new design or changing an existing one.
+- Critique, scoring or options for a change to a design.
+- Information about Kognie's prices, plans or features.
+- Small talk with no request.
+- Opening a tool or account screen.
+required_inputs:
+- name: target_asset
+  meaning: The design the request is about, if any.
+  required: false
+  default: none; the request may concern no design
+  sources:
+  - task.target_assets
+  - session.focus_asset
+produces:
+  result: other
+  detail: A text answer; never an image.
+behaviour:
+  may_request_user_input: false
+  may_request_assistance: false
+  readiness_model: false
+  method: deterministic
+  quality_gate: none
+  cost_class: low
+observed:
+  success_rate: null
+  sample_size: 0
+operational:
+  handler: graphic_designer.agents.support_agents.build_custom_agent
+  step_timeout_seconds: 60
+  max_retries: 1
+  fallback_for: no_capable_agent
+  tools: []

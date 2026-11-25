@@ -1,0 +1,137 @@
+id: manual-ops
+name: ManualOps
+version: 1.1.0
+location: internal
+
+description: >
+  Opens an interface in which the user carries out an action themselves.
+  It performs no change and produces no design. It covers manual editing
+  tools for a design and account actions such as adding funds. The user
+  may or may not complete the action after the interface opens.
+
+# Replace these interfaces with the ones your client actually provides.
+skills:
+  - id: open-crop-tool
+    interface: crop_tool
+    summary: Open the crop tool on a design.
+    prefill: [aspect_ratio]
+    examples:
+      - Open the crop tool on a1 v2 so the user can crop it themselves.
+      - Let the user crop a3 v1 by hand, starting from a square frame.
+      - Give the user manual control over the crop of a2 v4.
+  - id: open-corner-radius
+    interface: corner_radius_control
+    summary: Open the corner radius control for an image or element.
+    prefill: [target_element, radius]
+    examples:
+      - Open the corner radius control for the photo in a1 v1.
+      - Let the user adjust the rounding of the corners of a2 v2 themselves.
+  - id: open-transform-handles
+    interface: transform_handles
+    summary: Let the user move, resize or rotate an element by hand.
+    prefill: [target_element]
+    examples:
+      - Let the user reposition the logo in a1 v3 by hand.
+      - Open manual resizing for the headline block in a4 v1.
+  - id: open-text-editor
+    interface: text_editor
+    summary: Open a text block for the user to edit directly.
+    prefill: [target_text_block]
+    examples:
+      - Open the tagline in a2 v1 for the user to retype.
+      - Let the user edit the body text of a3 v2 themselves.
+  - id: open-canvas-control
+    interface: canvas_control
+    summary: >
+      Open one of the canvas controls for the user to set themselves:
+      brightness, contrast, exposure, temperature, tint, opacity, corner
+      radius, border width, border colour, rotation, flip, width, height,
+      position, crop or shrink size.
+    prefill: [control, value]
+    examples:
+      - Let the user adjust the brightness of a1 v2 themselves.
+      - Open the opacity slider for a3 v1.
+      - Let the user rotate a2 v1 by hand.
+      - Open the border controls so the user can add a border to a1 v1.
+  - id: open-box-picker
+    interface: box_picker
+    summary: Let the user draw boxes around the parts of a design to separate as layers.
+    prefill: [target_asset]
+    examples:
+      - Let the user draw boxes around the parts of a1 v2 they want as layers.
+  - id: open-image-picker
+    interface: image_picker
+    summary: Let the user pick which design in the session to work on.
+    prefill: []
+    examples:
+      - Let the user choose which of their designs to edit.
+      - Open the picker so the user can reselect the image they meant.
+  - id: open-add-funds
+    interface: add_funds
+    summary: Open the screen for adding money to the user's account.
+    prefill: [amount]
+    examples:
+      - Open the add-funds screen so the user can add money to their account.
+      - Open the add-funds screen with 20 pounds pre-filled.
+  - id: open-account-settings
+    interface: account_settings
+    summary: Open plan, subscription, billing or profile settings.
+    prefill: [section]
+    examples:
+      - Open the subscription settings so the user can change their plan.
+      - Open billing settings for the user to update their payment method.
+
+not_for:
+  - Changes to a design that the user wants made for them.
+  - Any task where performed_by is "system".
+  - Carrying out, confirming or reporting on a payment or account change.
+  - Providing information about the account or about how a tool works.
+
+required_inputs:
+  - name: interface
+    meaning: Which interface to open.
+    required: true
+    sources: [task.goal]
+  - name: target_asset
+    meaning: The design version the interface acts on.
+    required: true
+    applies_when: The interface edits a design.
+    sources: [task.target_assets, session.focus_asset, user]
+  - name: prefill
+    meaning: Starting values the user mentioned, such as a ratio or an amount.
+    required: false
+    default: the interface's own defaults
+    sources: [task.constraints]
+
+produces:
+  result: opened_interface
+  detail: >
+    A client action naming the interface and its pre-filled values. No
+    asset. Completion means the interface was opened, not that the user
+    acted.
+
+behaviour:
+  may_request_user_input: false
+  may_request_assistance: false
+  opens_interface: true
+  readiness_model: false
+  method: deterministic
+  quality_gate: none
+  cost_class: low
+  typical_latency_seconds: 1
+
+observed:
+  opened: 0
+  completed_by_user: 0
+  abandoned: 0
+
+operational:
+  handler: image_agents.agents.manual_ops.ManualOpsAgent
+  step_timeout_seconds: 10
+  max_retries: 0
+  emits: client_action
+  wraps: [manualEditHandler, manual_operations.json]
+  canvas_controls: [brightness, contrast, exposure, temperature, tint, opacity, corner_radius,
+                    border_width, border_color, rotation, flip, width, height, position, crop,
+                    shrink_size]
+  tools: [match_manual_control, build_prefill, open_interface, emit_manual_edit]

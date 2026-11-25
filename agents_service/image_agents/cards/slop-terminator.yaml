@@ -1,0 +1,47 @@
+id: slop-terminator
+name: Slop Terminator
+version: 1.0.0
+location: internal
+description: Searches a generated design for AI artifacts (malformed hands and faces, garbled
+  lettering, smeared textures, impossible geometry) and corrects them.
+skills:
+- id: detect-artifacts
+  summary: Find generation artifacts and report them.
+  examples:
+  - Check a1 v1 for AI generation artifacts.
+  - Find any garbled lettering in a2 v3.
+- id: repair-artifacts
+  summary: Correct generation artifacts in a design.
+  examples:
+  - Fix the malformed hands in a1 v2.
+  - Clean up the AI artifacts in a3 v1.
+  - Repair the garbled sign text in a2 v2.
+not_for:
+- A specific change the user asks for that is not the repair of an artifact.
+- Judging design quality or advising on design.
+- Creating a new design.
+required_inputs:
+- name: target_asset
+  meaning: The design version to work on.
+  required: true
+  sources:
+  - task.target_assets
+  - session.focus_asset
+  - user
+produces:
+  result: changed_image
+  detail: A defect list and, when repairing, a corrected version.
+behaviour:
+  may_request_user_input: false
+  may_request_assistance: true
+  readiness_model: false
+  method: generative
+  quality_gate: always
+  cost_class: medium
+observed:
+  success_rate: null
+  sample_size: 0
+operational:
+  handler: your_package.slop_subgraph
+  step_timeout_seconds: 60
+  max_retries: 1

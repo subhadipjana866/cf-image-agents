@@ -1,0 +1,2164 @@
+{
+  "models": "decisions_only:gpt-6-luna",
+  "usage": {
+    "calls": 53,
+    "input_tokens": 188861,
+    "output_tokens": 0,
+    "seconds": 30.8
+  },
+  "results": [
+    {
+      "case": {
+        "id": "gen-catalog",
+        "input": "Make an Instagram post for our Diwali sale",
+        "assets": "none",
+        "expect": [
+          "image-generator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Make an Instagram post for our Diwali sale",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-generator",
+            "confidence": "high",
+            "analysis": "decisions: image-generator=0.99, chitchat-handler=0.01, critic-agent=0.00",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-generator"
+        ]
+      },
+      "got": [
+        "image-generator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "gen-freeform",
+        "input": "Design a wedding invitation for Priya and Arjun with a floral border",
+        "assets": "none",
+        "expect": [
+          "image-generator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Design a wedding invitation for Priya and Arjun with a floral border",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-generator",
+            "confidence": "high",
+            "analysis": "decisions: image-generator=0.99, chitchat-handler=0.01, critic-agent=0.00",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-generator"
+        ]
+      },
+      "got": [
+        "image-generator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "gen-new-while-asset-in-focus",
+        "input": "Now create a LinkedIn banner announcing we're hiring a backend engineer",
+        "expect": [
+          "image-generator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Now create a LinkedIn banner announcing we're hiring a backend engineer",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-generator",
+            "confidence": "high",
+            "analysis": "decisions: image-generator=0.92, image-editor=0.03, chitchat-handler=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-generator"
+        ]
+      },
+      "got": [
+        "image-generator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "gen-from-reference",
+        "input": "Make a flyer for our Christmas party in the same style as this one",
+        "expect": [
+          "image-generator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Make a flyer for our Christmas party in the same style as this one",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-generator",
+            "confidence": "high",
+            "analysis": "decisions: image-generator=0.99, chitchat-handler=0.01, critic-agent=0.00",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-generator"
+        ]
+      },
+      "got": [
+        "image-generator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "create-more",
+        "input": "Give me 3 more versions of this",
+        "expect": [
+          "image-generator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.96, amendment=0.04, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Give me 3 more versions of this",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-generator",
+            "confidence": "high",
+            "analysis": "decisions: image-generator=0.96, chitchat-handler=0.01, image-editor=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-generator"
+        ]
+      },
+      "got": [
+        "image-generator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "regenerate",
+        "input": "Regenerate it, I want a completely fresh take on the same brief",
+        "expect": [
+          "image-generator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.88, amendment=0.12, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Regenerate it, I want a completely fresh take on the same brief",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-generator",
+            "confidence": "high",
+            "analysis": "decisions: image-generator=0.98, chitchat-handler=0.01, image-editor=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-generator"
+        ]
+      },
+      "got": [
+        "image-generator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-background",
+        "input": "Change the background to navy blue",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.99, amendment=0.01, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Change the background to navy blue",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "decisions: image-editor=1.00, chitchat-handler=0.00, critic-agent=0.00",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-headline-text",
+        "input": "Change the headline to \"Now Open\"",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.98, amendment=0.02, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Change the headline to \"Now Open\"",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "decisions: image-editor=0.99, critic-agent=0.01, chitchat-handler=0.00",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-several-changes",
+        "input": "Make the headline bigger, change the background to navy and make the CTA orange",
+        "expect_all": "image-editor"
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.99, amendment=0.01, cancellation=0.00]; p(user performs)=0.01",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Make the headline bigger, change the background to navy and make the CTA orange",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "decisions: image-editor=1.00, chitchat-handler=0.00, critic-agent=0.00",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-erase",
+        "input": "Remove the cup on the left side",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Remove the cup on the left side",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "decisions: image-editor=1.00, chitchat-handler=0.00, critic-agent=0.00",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-brightness-exact",
+        "input": "Increase brightness by 20",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.94, amendment=0.06, cancellation=0.00]; p(user performs)=0.01",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Increase brightness by 20",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "decisions: image-editor=0.97, chitchat-handler=0.01, critic-agent=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-style-switch",
+        "input": "Make it look Bauhaus",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.86, amendment=0.14, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Make it look Bauhaus",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "decisions: image-editor=0.98, critic-agent=0.01, image-generator=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-platform-resize",
+        "input": "Make an Instagram story and a LinkedIn version of this",
+        "expect_all": "image-editor"
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.99, amendment=0.01, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Make an Instagram story and a LinkedIn version of this",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "decisions: image-editor=0.99, image-generator=0.01, chitchat-handler=0.00",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-upscale",
+        "input": "Upscale this for print",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Upscale this for print",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "decisions: image-editor=0.99, chitchat-handler=0.01, critic-agent=0.00",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-undo",
+        "input": "Undo the last change, I liked the previous version better",
+        "assets": "edited",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.93, amendment=0.05, cancellation=0.02]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Undo the last change, I liked the previous version better",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "decisions: image-editor=0.98, critic-agent=0.01, image-generator=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-export",
+        "input": "Can I get this as a transparent PNG?",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.98, amendment=0.02, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Can I get this as a transparent PNG?",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "decisions: image-editor=1.00, chitchat-handler=0.00, critic-agent=0.00",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-crop-square",
+        "input": "Crop it to a square",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.99, amendment=0.01, cancellation=0.00]; p(user performs)=0.03",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Crop it to a square",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "decisions: image-editor=0.97, chitchat-handler=0.01, critic-agent=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-no-asset",
+        "input": "Make the logo bigger",
+        "assets": "none",
+        "expect_any": [
+          [
+            "image-editor"
+          ],
+          [
+            "clarify"
+          ]
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.98, amendment=0.02, cancellation=0.00]; p(user performs)=0.01",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Make the logo bigger",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "medium",
+            "analysis": "decisions: image-editor=0.77, clarify=0.10, image-generator=0.03",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "layer-logo",
+        "input": "Separate the logo as its own layer",
+        "expect": [
+          "layering-agent"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.99, amendment=0.01, cancellation=0.00]; p(user performs)=0.48",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Separate the logo as its own layer",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "layering-agent",
+            "confidence": "high",
+            "analysis": "decisions: layering-agent=0.98, chitchat-handler=0.01, clarify=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "layering-agent"
+        ]
+      },
+      "got": [
+        "layering-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "layer-cutout",
+        "input": "Cut out the coffee cup so I get it on a transparent background",
+        "expect": [
+          "layering-agent"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.09",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Cut out the coffee cup so I get it on a transparent background",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "layering-agent",
+            "confidence": "high",
+            "analysis": "decisions: layering-agent=0.93, image-editor=0.04, image-generator=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "layering-agent"
+        ]
+      },
+      "got": [
+        "layering-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "layer-text",
+        "input": "Make all the text editable as separate layers",
+        "expect": [
+          "layering-agent"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.99, amendment=0.01, cancellation=0.00]; p(user performs)=0.41",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Make all the text editable as separate layers",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "layering-agent",
+            "confidence": "medium",
+            "analysis": "decisions: layering-agent=0.69, image-editor=0.16, manual-ops=0.04",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "layering-agent"
+        ]
+      },
+      "got": [
+        "layering-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "slop-hands",
+        "input": "Her hands look weird, fix them",
+        "assets": "person",
+        "expect": [
+          "slop-terminator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Her hands look weird, fix them",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "slop-terminator",
+            "confidence": "high",
+            "analysis": "decisions: slop-terminator=0.92, image-editor=0.02, clarify=0.02",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "slop-terminator"
+        ]
+      },
+      "got": [
+        "slop-terminator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "slop-check",
+        "input": "Check this for AI artifacts",
+        "expect": [
+          "slop-terminator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.99, amendment=0.01, cancellation=0.00]; p(user performs)=0.05",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Check this for AI artifacts",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "slop-terminator",
+            "confidence": "high",
+            "analysis": "decisions: slop-terminator=0.98, chitchat-handler=0.01, suggestion-agent=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "slop-terminator"
+        ]
+      },
+      "got": [
+        "slop-terminator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "critic-improve",
+        "input": "How can I make this design better?",
+        "expect": [
+          "critic-agent"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "How can I make this design better?",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "critic-agent",
+            "confidence": "high",
+            "analysis": "decisions: critic-agent=1.00, chitchat-handler=0.00, image-editor=0.00",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "critic-agent"
+        ]
+      },
+      "got": [
+        "critic-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "critic-unbalanced",
+        "input": "Why does this look so unbalanced?",
+        "expect": [
+          "critic-agent"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Why does this look so unbalanced?",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "critic-agent",
+            "confidence": "high",
+            "analysis": "decisions: critic-agent=0.98, chitchat-handler=0.01, question-handler=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "critic-agent"
+        ]
+      },
+      "got": [
+        "critic-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "critic-dislike",
+        "input": "I don't like it",
+        "expect_any": [
+          [
+            "critic-agent"
+          ],
+          [
+            "clarify"
+          ]
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.79, amendment=0.20, cancellation=0.01]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "I don't like it",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "critic-agent",
+            "confidence": "high",
+            "analysis": "decisions: critic-agent=0.98, chitchat-handler=0.01, clarify=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "critic-agent"
+        ]
+      },
+      "got": [
+        "critic-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "suggest-colours",
+        "input": "What colours would work for the button?",
+        "expect": [
+          "suggestion-agent"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "What colours would work for the button?",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "suggestion-agent",
+            "confidence": "medium",
+            "analysis": "decisions: suggestion-agent=0.65, critic-agent=0.14, question-handler=0.14",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "suggestion-agent"
+        ]
+      },
+      "got": [
+        "suggestion-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "suggest-headlines",
+        "input": "Give me some catchier headline ideas",
+        "expect": [
+          "suggestion-agent"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.98, amendment=0.02, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Give me some catchier headline ideas",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "suggestion-agent",
+            "confidence": "medium",
+            "analysis": "decisions: suggestion-agent=0.69, critic-agent=0.09, image-editor=0.06",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "suggestion-agent"
+        ]
+      },
+      "got": [
+        "suggestion-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "eval-score",
+        "input": "Rate this design out of 10",
+        "expect": [
+          "image-evaluator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Rate this design out of 10",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-evaluator",
+            "confidence": "high",
+            "analysis": "decisions: image-evaluator=0.88, critic-agent=0.07, chitchat-handler=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-evaluator"
+        ]
+      },
+      "got": [
+        "image-evaluator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "eval-is-it-good",
+        "input": "Is this good?",
+        "expect_any": [
+          [
+            "image-evaluator"
+          ],
+          [
+            "critic-agent"
+          ]
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.01",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Is this good?",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-evaluator",
+            "confidence": "medium",
+            "analysis": "decisions: image-evaluator=0.63, critic-agent=0.30, question-handler=0.02",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-evaluator"
+        ]
+      },
+      "got": [
+        "image-evaluator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "manual-crop",
+        "input": "Let me crop it myself",
+        "expect": [
+          "manual-ops"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.75, amendment=0.22, cancellation=0.03]; p(user performs)=0.99",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Let me crop it myself",
+            "desired_result": "(not asked)",
+            "performed_by": "user",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "manual-ops",
+            "confidence": "high",
+            "analysis": "decisions: manual-ops=0.97, chitchat-handler=0.01, layering-agent=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "manual-ops"
+        ]
+      },
+      "got": [
+        "manual-ops"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "manual-brightness",
+        "input": "I want to drag the brightness slider myself",
+        "expect": [
+          "manual-ops"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.99, amendment=0.01, cancellation=0.00]; p(user performs)=1.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "I want to drag the brightness slider myself",
+            "desired_result": "(not asked)",
+            "performed_by": "user",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "manual-ops",
+            "confidence": "high",
+            "analysis": "decisions: manual-ops=0.99, chitchat-handler=0.01, critic-agent=0.00",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "manual-ops"
+        ]
+      },
+      "got": [
+        "manual-ops"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "manual-add-funds",
+        "input": "Add 20 dollars to my account",
+        "assets": "none",
+        "expect": [
+          "manual-ops"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=1.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Add 20 dollars to my account",
+            "desired_result": "(not asked)",
+            "performed_by": "user",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "manual-ops",
+            "confidence": "high",
+            "analysis": "decisions: manual-ops=0.98, chitchat-handler=0.01, clarify=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "manual-ops"
+        ]
+      },
+      "got": [
+        "manual-ops"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "manual-subscription",
+        "input": "Open my subscription settings",
+        "assets": "none",
+        "expect": [
+          "manual-ops"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.97",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Open my subscription settings",
+            "desired_result": "(not asked)",
+            "performed_by": "user",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "manual-ops",
+            "confidence": "high",
+            "analysis": "decisions: manual-ops=0.99, chitchat-handler=0.01, critic-agent=0.00",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "manual-ops"
+        ]
+      },
+      "got": [
+        "manual-ops"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "question-cost",
+        "input": "How much does one generation cost?",
+        "expect": [
+          "question-handler"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "How much does one generation cost?",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "question-handler",
+            "confidence": "medium",
+            "analysis": "decisions: question-handler=0.65, manual-ops=0.13, none=0.10",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "question-handler"
+        ]
+      },
+      "got": [
+        "question-handler"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "question-formats",
+        "input": "What file formats can you export?",
+        "expect": [
+          "question-handler"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "What file formats can you export?",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "question-handler",
+            "confidence": "high",
+            "analysis": "decisions: question-handler=0.99, manual-ops=0.01, chitchat-handler=0.00",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "question-handler"
+        ]
+      },
+      "got": [
+        "question-handler"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "question-kerning",
+        "input": "What is kerning?",
+        "expect": [
+          "question-handler"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "What is kerning?",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "question-handler",
+            "confidence": "high",
+            "analysis": "decisions: question-handler=0.98, chitchat-handler=0.01, slop-terminator=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "question-handler"
+        ]
+      },
+      "got": [
+        "question-handler"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "chitchat-thanks",
+        "input": "thanks, that's great!",
+        "expect": [
+          "chitchat-handler"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "thanks, that's great!",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "chitchat-handler",
+            "confidence": "high",
+            "analysis": "decisions: chitchat-handler=0.97, critic-agent=0.01, image-editor=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "chitchat-handler"
+        ]
+      },
+      "got": [
+        "chitchat-handler"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "chitchat-hello",
+        "input": "hi there",
+        "assets": "none",
+        "expect": [
+          "chitchat-handler"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "hi there",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "chitchat-handler",
+            "confidence": "high",
+            "analysis": "decisions: chitchat-handler=0.98, critic-agent=0.01, image-editor=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "chitchat-handler"
+        ]
+      },
+      "got": [
+        "chitchat-handler"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "chain-edit-then-manual-crop",
+        "input": "Change the background to navy and then let me crop it",
+        "expect": [
+          "image-editor",
+          "manual-ops"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.97, amendment=0.03, cancellation=0.00]; p(user performs)=1.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Change the background to navy and then let me crop it",
+            "desired_result": "(not asked)",
+            "performed_by": "user",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "manual-ops",
+            "confidence": "low",
+            "analysis": "decisions: manual-ops=0.49, image-editor=0.39, chitchat-handler=0.02",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "manual-ops"
+        ]
+      },
+      "got": [
+        "manual-ops"
+      ],
+      "ok": false
+    },
+    {
+      "case": {
+        "id": "chain-edit-then-more",
+        "input": "Make the headline bigger and give me 2 more versions",
+        "expect": [
+          "image-editor",
+          "image-generator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.93, amendment=0.07, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Make the headline bigger and give me 2 more versions",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-generator",
+            "confidence": "medium",
+            "analysis": "decisions: image-generator=0.60, image-editor=0.32, image-evaluator=0.02",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-generator"
+        ]
+      },
+      "got": [
+        "image-generator"
+      ],
+      "ok": false
+    },
+    {
+      "case": {
+        "id": "chain-edit-then-slop",
+        "input": "Remove the cup on the left, then check the result for AI artifacts",
+        "expect": [
+          "image-editor",
+          "slop-terminator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Remove the cup on the left, then check the result for AI artifacts",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "slop-terminator",
+            "confidence": "low",
+            "analysis": "decisions: slop-terminator=0.46, image-editor=0.45, image-evaluator=0.03",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "slop-terminator"
+        ]
+      },
+      "got": [
+        "slop-terminator"
+      ],
+      "ok": false
+    },
+    {
+      "case": {
+        "id": "chain-layer-and-critique",
+        "input": "Separate the logo as a layer and tell me how to improve the layout",
+        "expect": [
+          "layering-agent",
+          "critic-agent"
+        ],
+        "unordered": true
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.87",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Separate the logo as a layer and tell me how to improve the layout",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "layering-agent",
+            "confidence": "medium",
+            "analysis": "decisions: layering-agent=0.54, critic-agent=0.19, image-editor=0.12",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "layering-agent"
+        ]
+      },
+      "got": [
+        "layering-agent"
+      ],
+      "ok": false
+    },
+    {
+      "case": {
+        "id": "none-video",
+        "input": "Turn this into a 10 second video with music",
+        "expect": [
+          "none"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Turn this into a 10 second video with music",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "no_capable_agent",
+            "agent_id": null,
+            "confidence": "high",
+            "analysis": "decisions: none=0.82, image-editor=0.04, clarify=0.04",
+            "missing_inputs": [],
+            "capability_gap": "no agent covers this request"
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "none"
+        ]
+      },
+      "got": [
+        "none"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "none-print-shipping",
+        "input": "Print 500 copies and ship them to my office",
+        "expect": [
+          "none"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.99, amendment=0.01, cancellation=0.00]; p(user performs)=0.50",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Print 500 copies and ship them to my office",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "no_capable_agent",
+            "agent_id": null,
+            "confidence": "medium",
+            "analysis": "decisions: none=0.58, manual-ops=0.18, clarify=0.18",
+            "missing_inputs": [],
+            "capability_gap": "no agent covers this request"
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "none"
+        ]
+      },
+      "got": [
+        "none"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "clarify-contradiction",
+        "input": "Make it minimalist and add confetti, balloons, stars, a banner and a ribbon",
+        "expect": [
+          "clarify"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.96, amendment=0.04, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Make it minimalist and add confetti, balloons, stars, a banner and a ribbon",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "decisions: image-editor=0.99, critic-agent=0.01, chitchat-handler=0.00",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": false
+    },
+    {
+      "case": {
+        "id": "clarify-gibberish",
+        "input": "asdfgh",
+        "expect_any": [
+          [
+            "clarify"
+          ],
+          [
+            "chitchat-handler"
+          ],
+          [
+            "none"
+          ]
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00",
+        "tasks": [],
+        "clarification": {
+          "request": "(Decisions API: ask the user to clarify)",
+          "options": [],
+          "why": "decisions: input_type [new_task=1.00, amendment=0.00, cancellation=0.00]; p(user performs)=0.00"
+        },
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "clarify"
+        ]
+      },
+      "got": [
+        "clarify"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "pending-support-colours",
+        "input": "what colours would go well here?",
+        "pending_task": {
+          "id": "k7",
+          "goal": "Change the colour of the car in a1 v1",
+          "requested": "Which colour should the car be?",
+          "options": [],
+          "agent_id": "image-editor"
+        },
+        "expect": [
+          "suggestion-agent"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.47, supporting_task=0.31, input_for_pending_task=0.19]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "what colours would go well here?",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "suggestion-agent",
+            "confidence": "high",
+            "analysis": "decisions: suggestion-agent=0.86, critic-agent=0.03, clarify=0.03",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "suggestion-agent"
+        ]
+      },
+      "got": [
+        "suggestion-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "pending-pick-option",
+        "input": "the second",
+        "pending_task": {
+          "id": "k7",
+          "goal": "Change the colour of the car in a1 v1",
+          "requested": "Which colour should the car be?",
+          "options": [
+            "warm sunset tones",
+            "cool blue dusk",
+            "neutral daylight"
+          ],
+          "agent_id": "image-editor"
+        },
+        "expect": [
+          "pending"
+        ]
+      },
+      "route": {
+        "input_type": "input_for_pending_task",
+        "analysis": "decisions: input_type [input_for_pending_task=0.50, new_task=0.40, amendment=0.04]; p(user performs)=0.00",
+        "tasks": [],
+        "clarification": null,
+        "pending_input": {
+          "task_id": "k7",
+          "input": "the second",
+          "agent_id": "image-editor"
+        },
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "pending"
+        ]
+      },
+      "got": [
+        "pending"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "pending-field-answer",
+        "input": "30% off, valid till Sunday",
+        "assets": "none",
+        "pending_task": {
+          "id": "g1",
+          "goal": "Create an Instagram post for a Diwali sale",
+          "requested": "What discount are you offering, and until when?",
+          "options": [],
+          "agent_id": "image-generator"
+        },
+        "expect": [
+          "pending"
+        ]
+      },
+      "route": {
+        "input_type": "input_for_pending_task",
+        "analysis": "decisions: input_type [input_for_pending_task=1.00, new_task=0.00, supporting_task=0.00]; p(user performs)=0.00",
+        "tasks": [],
+        "clarification": null,
+        "pending_input": {
+          "task_id": "g1",
+          "input": "30% off, valid till Sunday",
+          "agent_id": "image-generator"
+        },
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "pending"
+        ]
+      },
+      "got": [
+        "pending"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "pending-side-question",
+        "input": "what fonts do you usually use?",
+        "assets": "none",
+        "pending_task": {
+          "id": "g1",
+          "goal": "Create an Instagram post for a Diwali sale",
+          "requested": "What discount are you offering, and until when?",
+          "options": [],
+          "agent_id": "image-generator"
+        },
+        "expect": [
+          "question-handler"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.65, supporting_task=0.29, input_for_pending_task=0.04]; p(user performs)=0.00",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "what fonts do you usually use?",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "question-handler",
+            "confidence": "high",
+            "analysis": "decisions: question-handler=0.95, chitchat-handler=0.01, manual-ops=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "question-handler"
+        ]
+      },
+      "got": [
+        "question-handler"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "pending-cancel",
+        "input": "actually forget it, don't make the post",
+        "assets": "none",
+        "pending_task": {
+          "id": "g1",
+          "goal": "Create an Instagram post for a Diwali sale",
+          "requested": "What discount are you offering, and until when?",
+          "options": [],
+          "agent_id": "image-generator"
+        },
+        "expect": [
+          "cancel"
+        ]
+      },
+      "route": {
+        "input_type": "cancellation",
+        "analysis": "decisions: input_type [cancellation=1.00, new_task=0.00, input_for_pending_task=0.00]; p(user performs)=0.00",
+        "tasks": [],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "cancel"
+        ]
+      },
+      "got": [
+        "cancel"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "pending-new-task",
+        "input": "Leave that, change the background of the coffee post to navy instead",
+        "pending_task": {
+          "id": "g1",
+          "goal": "Create an Instagram post for a Diwali sale",
+          "requested": "What discount are you offering, and until when?",
+          "options": [],
+          "agent_id": "image-generator"
+        },
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "decisions: input_type [new_task=0.76, amendment=0.22, supporting_task=0.01]; p(user performs)=0.03",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Leave that, change the background of the coffee post to navy instead",
+            "desired_result": "(not asked)",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "decisions: image-editor=0.96, chitchat-handler=0.01, critic-agent=0.01",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    }
+  ]
+}

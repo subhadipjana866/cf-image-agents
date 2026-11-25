@@ -1,0 +1,110 @@
+id: image-generator
+name: Image Generator
+version: 1.1.0
+location: internal
+description: >
+  Creates a new design from a brief and returns it as a new asset. The
+  brief (design goal, platform, offer and other details) is settled with
+  the user beforehand by the input collector; this agent writes the copy,
+  sets the type and renders. For designs with overlaid text it
+  outputs a layout specification, so that text is stored as editable blocks.
+  Also creates further variations of an existing design, and redoes a
+  design from its saved brief; both return new assets and leave the
+  original unchanged.
+skills:
+- id: generate-design
+  summary: Create a new design from a description.
+  examples:
+  - Create a poster for a jazz night with a deep blue palette.
+  - Generate a product banner for a coffee brand, 1200 by 628 pixels.
+  - Design a square social post announcing a summer sale.
+  - Create a minimalist logo concept for a bakery called Crumb.
+- id: generate-from-reference
+  summary: Create a new design in the style of a reference asset.
+  examples:
+  - Create a new flyer in the style of a2 v1 for a different event.
+  - Generate a companion banner that matches the look of a1 v3.
+- id: generate-freeform
+  summary: Create a design for a purpose outside the standard catalog of design goals.
+  examples:
+  - Design a menu card for a cafe.
+  - Create a wedding invitation with a floral border.
+  - Make a certificate of completion for a coding course.
+- id: regenerate
+  summary: Redo a design from its saved brief, for a fresh take on the same request.
+  examples:
+  - Regenerate a1 v1 from the same brief.
+  - Try the poster a2 again from scratch, same text and goal.
+  - Redo a1 with the new product photo the user attached.
+- id: create-more
+  summary: >
+    Create further variations of an existing design, keeping its brief and
+    text but changing the composition. Each variation is a new asset.
+  examples:
+  - Create three more variations of a1 v2.
+  - Give the user another version of a3 v1 with a different layout.
+  - Make two alternatives of a2 v1 in the same style.
+not_for:
+- Changing an existing design.
+- Judging or advising on a design.
+- Extracting part of a design.
+required_inputs:
+- name: brief
+  meaning: What the design should show and be for.
+  required: true
+  sources:
+  - task.goal
+  - task.constraints
+  - user
+- name: size
+  meaning: Dimensions or aspect ratio.
+  required: false
+  default: agent may choose
+  sources:
+  - task.constraints
+- name: source_asset
+  meaning: The design to vary or redo.
+  required: true
+  applies_when: The task asks for variations or a redo of an existing design.
+  sources:
+  - task.target_assets
+  - session.focus_asset
+  - user
+- name: logo
+  meaning: The logo to place on the design.
+  required: false
+  default: the brand kit logo if there is one, otherwise none
+  sources:
+  - task.constraints
+  - brand_kit
+  - user
+produces:
+  result: new_image
+  detail: A new asset at version 1, with its layout specification where text is overlaid.
+behaviour:
+  may_request_user_input: true
+  may_request_assistance: true
+  readiness_model: false
+  method: generative
+  quality_gate: always
+  cost_class: high
+  typical_latency_seconds: 30-120
+observed:
+  success_rate: null
+  sample_size: 0
+operational:
+  handler: graphic_designer.agents.generator
+  step_timeout_seconds: 240
+  max_retries: 1
+  wraps: [v32Generation, runGptImageModel, v32CreateMore, regenerateManager]
+  tools:
+    brief: [check_request_scope, propose_scope_resolution, clarify_intent, route_intent,
+            get_layout_facts, build_frontend_manifest, auto_answer_fields, extract_field_answers,
+            judge_new_design, flush_design_context, decide_photo_mode, detect_cta_request,
+            save_brief, load_brief, read_brief_from_image]
+    copy: [make_hook, budget_words_per_platform, apply_brand_voice, protect_locked_text, spellcheck]
+    typography: [pick_font_pairing, fix_contrast_wcag, render_layout_png, build_text_layers,
+                 resolve_font_request, check_text_registration]
+    render: [plan_subject, art_direct, compose_layout, write_director_prompt, apply_style_preset,
+             antislop_guard, tailor_prompt, assemble_references, render_image, build_freeform_prompt,
+             composite_logo_strict_paste, create_more_variation, generation_fallback_chain]

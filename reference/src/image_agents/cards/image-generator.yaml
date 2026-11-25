@@ -1,0 +1,55 @@
+id: image-generator
+name: Image Generator
+version: 1.0.0
+location: internal
+description: Creates a new design from a brief and returns it as a new asset. For designs
+  with overlaid text it outputs a layout specification, so that text is stored as editable
+  blocks.
+skills:
+- id: generate-design
+  summary: Create a new design from a description.
+  examples:
+  - Create a poster for a jazz night with a deep blue palette.
+  - Generate a product banner for a coffee brand, 1200 by 628 pixels.
+  - Design a square social post announcing a summer sale.
+  - Create a minimalist logo concept for a bakery called Crumb.
+- id: generate-from-reference
+  summary: Create a new design in the style of a reference asset.
+  examples:
+  - Create a new flyer in the style of a2 v1 for a different event.
+  - Generate a companion banner that matches the look of a1 v3.
+not_for:
+- Changing an existing design.
+- Judging or advising on a design.
+- Extracting part of a design.
+required_inputs:
+- name: brief
+  meaning: What the design should show and be for.
+  required: true
+  sources:
+  - task.goal
+  - task.constraints
+  - user
+- name: size
+  meaning: Dimensions or aspect ratio.
+  required: false
+  default: agent may choose
+  sources:
+  - task.constraints
+produces:
+  result: new_image
+  detail: A new asset at version 1, with its layout specification where text is overlaid.
+behaviour:
+  may_request_user_input: true
+  may_request_assistance: true
+  readiness_model: false
+  method: generative
+  quality_gate: always
+  cost_class: high
+observed:
+  success_rate: null
+  sample_size: 0
+operational:
+  handler: your_package.generator_subgraph
+  step_timeout_seconds: 60
+  max_retries: 1

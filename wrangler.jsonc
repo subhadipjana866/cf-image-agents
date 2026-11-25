@@ -1,0 +1,34 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "image-chat-agents",
+  "main": "src/server.ts",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/agents/*", "/images/*"]
+  },
+  "vars": { "CHAT_MODEL": "gpt-5.4-mini", "ROUTER_MODEL": "gpt-5.4-mini", "AGENT_MODEL": "openai:gpt-5.4" },
+  "ai": { "binding": "AI", "remote": true },
+  "r2_buckets": [{ "binding": "IMAGES_BUCKET", "bucket_name": "image-chat-agents-images" }],
+  
+  "durable_objects": {
+    "bindings": [
+      { "name": "ImageChatAgent", "class_name": "ImageChatAgent" },
+      { "name": "AGENTS_CONTAINER", "class_name": "AgentsContainer" }
+    ]
+  },
+  "containers": [
+    {
+      "class_name": "AgentsContainer",
+      "image": "./agents_service/Dockerfile",
+      "instance_type": "standard-1",
+      "max_instances": 3
+    }
+  ],
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["ImageChatAgent"] },
+    { "tag": "v2", "new_sqlite_classes": ["AgentsContainer"] }
+  ],
+  "observability": { "enabled": true }
+}

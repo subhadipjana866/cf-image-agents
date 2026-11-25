@@ -1,0 +1,17 @@
+{
+  "extends": "agents/tsconfig",
+  "compilerOptions": {
+    "types": [
+      "node",
+      "@cloudflare/workers-types",
+      "vite/client"
+    ],
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src",
+    "tests",
+    "worker-configuration.d.ts",
+    "vite.config.ts"
+  ]
+}

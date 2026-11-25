@@ -1,0 +1,55 @@
+id: image-evaluator
+name: Image Evaluator
+version: 1.1.0
+location: internal
+description: Scores the quality of a design and reports defects. Returns a report, never a
+  changed design.
+skills:
+- id: evaluate-quality
+  summary: Score a design and list its defects.
+  examples:
+  - Evaluate the quality of a1 v2.
+  - Score the overall execution of a1 v1 and list its defects.
+  - Check whether a3 v4 meets the brief it was generated from.
+  - Compare a2 v3 with a2 v2 and say which is better executed.
+not_for:
+- Suggesting how to improve a design.
+- Changing or repairing a design.
+- Offering options for a change.
+- Finding or repairing AI generation artifacts such as malformed hands or faces, garbled
+  lettering or smeared textures.
+- Explaining why a design looks wrong, unbalanced or unappealing to the user.
+required_inputs:
+- name: target_asset
+  meaning: The design version to work on.
+  required: true
+  sources:
+  - task.target_assets
+  - session.focus_asset
+  - user
+- name: brief
+  meaning: What the design was meant to achieve.
+  required: false
+  default: judge on general quality
+  sources:
+  - task.constraints
+  - task_record
+produces:
+  result: quality_assessment
+  detail: Scores, pass or fail, and a list of defects.
+behaviour:
+  may_request_user_input: false
+  may_request_assistance: false
+  readiness_model: false
+  method: deterministic
+  quality_gate: none
+  cost_class: low
+observed:
+  success_rate: null
+  sample_size: 0
+operational:
+  handler: graphic_designer.agents.evaluator
+  step_timeout_seconds: 60
+  max_retries: 1
+  wraps: [critiquepipeline.verifyEdit, critiquepipeline.editQuality, v33 text QA]
+  tools: [score_quality, check_brief_compliance, verify_edit_applied, compare_versions, check_text_legibility]

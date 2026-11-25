@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Text Layers Recompose</title>
+<style>
+  /* Fonts are loaded by NAME from the package's own files. Courier New comes from the system. */
+  @font-face { font-family: 'Montserrat'; src: url('../typography_assets/fonts/montserrat/Montserrat[wght].ttf'); font-weight: 100 900; }
+  @font-face { font-family: 'Comfortaa'; src: url('../typography_assets/fonts/comfortaa/Comfortaa[wght].ttf'); font-weight: 300 700; }
+  @font-face { font-family: 'Amatic SC'; src: url('../typography_assets/fonts/amatic_sc/AmaticSC-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'Pacifico'; src: url('../typography_assets/fonts/pacifico/Pacifico-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'Lexend'; src: url('../typography_assets/fonts/lexend/Lexend[wght].ttf'); font-weight: 100 900; }
+  @font-face { font-family: 'Caveat'; src: url('../typography_assets/fonts/caveat/Caveat[wght].ttf'); font-weight: 400 700; }
+  @font-face { font-family: 'Courier New'; src: local('Courier New'), local('CourierNewPSMT'); font-weight: 400; }
+
+  :root { --bg: #f6f5f1; --fg: #1c1c1c; --muted: #666; --line: #dcd9d1; --accent: #0a6cdf; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #151515; --fg: #ececec; --muted: #9a9a9a; --line: #333; --accent: #4da3ff; } }
+  :root[data-theme="dark"] { --bg: #151515; --fg: #ececec; --muted: #9a9a9a; --line: #333; --accent: #4da3ff; }
+  body { background: var(--bg); color: var(--fg); font: 14px/1.45 system-ui, sans-serif; margin: 0; padding: 20px 16px; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 20px; margin: 0 0 6px; }
+  p { color: var(--muted); margin: 0 0 14px; }
+  .bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
+  button, label.file { font: inherit; padding: 6px 12px; border-radius: 6px; border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; }
+  button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  input[type=file] { display: none; }
+  .stage { position: relative; display: inline-block; max-width: 100%; border: 1px solid var(--line); }
+  .stage img, .stage canvas { display: block; max-width: 100%; height: auto; }
+  .layer { position: absolute; inset: 0; transform-origin: 0 0; }
+  .txt { position: absolute; white-space: pre; outline: none; }
+  .txt:focus { outline: 2px dashed var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Recompose text layers</h1>
+  <p>Load a generated graphic and its <code>*.text_layers.json</code>. Text is recreated from the metadata only:
+     on a canvas with <code>fillText(text, x, baseline_y)</code>, or as editable DOM text (click a line to edit it).</p>
+  <div class="bar">
+    <label class="file">Image <input id="imgIn" type="file" accept="image/*"></label>
+    <label class="file">text_layers.json <input id="jsonIn" type="file" accept=".json,application/json"></label>
+    <button data-mode="dom" class="on">Editable text over image</button>
+    <button data-mode="canvas">Canvas: text over image</button>
+    <button data-mode="text">Canvas: text only</button>
+  </div>
+  <div class="stage" id="stage"></div>
+</div>
+<script>
+let img = null, doc = null, mode = 'dom';
+const stage = document.getElementById('stage');
+const fontStr = (e, size) => `${e.font_style} ${e.font_weight} ${size}px ${e.css_font_family}`;
+const shown = (e, t) => e.text_transform === 'uppercase' ? t.toUpperCase() : t;
+
+async function draw() {
+  if (!img || !doc) return;
+  for (const e of doc.elements) await document.fonts.load(fontStr(e, e.font_size_px));
+  stage.innerHTML = '';
+  const W = doc.canvas.width, H = doc.canvas.height;
+  if (mode === 'dom') {
+    const im = new Image(); im.src = img.src; stage.append(im);
+    const layer = document.createElement('div'); layer.className = 'layer';
+    layer.style.width = W + 'px'; layer.style.height = H + 'px';
+    stage.append(layer);
+    const fit = () => { layer.style.transform = `scale(${im.clientWidth / W})`; };
+    im.onload = fit; new ResizeObserver(fit).observe(im);
+    for (const e of doc.elements) for (const ln of e.lines) {
+      const d = document.createElement('div');
+      d.className = 'txt'; d.contentEditable = 'true'; d.textContent = ln.text;
+      d.style.font = fontStr(e, e.font_size_px);
+      d.style.letterSpacing = e.letter_spacing_px + 'px';
+      d.style.color = e.color_hex;
+      d.style.textTransform = e.text_transform === 'uppercase' ? 'uppercase' : 'none';
+      // DOM boxes are positioned by their top edge: top = baseline - ascent * size
+      d.style.left = ln.x + 'px';
+      d.style.top = (ln.baseline_y - e.font_metrics.ascent * e.font_size_px) + 'px';
+      d.style.lineHeight = ((e.font_metrics.ascent + e.font_metrics.descent) * e.font_size_px) + 'px';
+      layer.append(d);
+    }
+  } else {
+    const c = document.createElement('canvas'); c.width = W; c.height = H; stage.append(c);
+    const ctx = c.getContext('2d');
+    if (mode === 'canvas') ctx.drawImage(img, 0, 0, W, H);
+    else { ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, H); }
+    for (const e of doc.elements) {
+      ctx.font = fontStr(e, e.font_size_px);
+      ctx.letterSpacing = e.letter_spacing_px + 'px';
+      ctx.fillStyle = e.color_hex; ctx.textBaseline = 'alphabetic';
+      for (const ln of e.lines) ctx.fillText(shown(e, ln.text), ln.x, ln.baseline_y);
+    }
+  }
+}
+document.getElementById('imgIn').onchange = ev => {
+  const f = ev.target.files[0]; if (!f) return;
+  img = new Image(); img.onload = draw; img.src = URL.createObjectURL(f);
+};
+document.getElementById('jsonIn').onchange = async ev => {
+  const f = ev.target.files[0]; if (!f) return;
+  doc = JSON.parse(await f.text()); draw();
+};
+document.querySelector('.bar').addEventListener('click', ev => {
+  const b = ev.target.closest('button'); if (!b) return;
+  mode = b.dataset.mode;
+  document.querySelectorAll('.bar button').forEach(x => x.classList.toggle('on', x === b));
+  draw();
+});
+</script>
+</body>
+</html>

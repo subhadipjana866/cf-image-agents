@@ -1,0 +1,51 @@
+id: question-handler
+name: Question Handler
+version: 1.1.0
+location: internal
+description: 'Provides information: about a design in the session, about the system and what
+  it can do, or about graphic design and marketing in general (typical offers, timing, copy
+  conventions).'
+skills:
+- id: provide-information
+  summary: Answer a request for information.
+  examples:
+  - State the dimensions and format of a1 v2.
+  - Explain what the difference is between a1 v2 and a1 v3.
+  - Explain which file formats the system can export.
+  - Explain what kerning is.
+  - Suggest what discount is typical for a festive sale.
+  - Explain how much a generation costs.
+  - Explain why the last edit changed the background.
+  - Say what the user's current plan includes.
+not_for:
+- Changing, creating or assessing a design.
+- Small talk with no information need.
+- Opening a tool or account screen.
+required_inputs:
+- name: target_asset
+  meaning: The design version to work on.
+  required: false
+  sources:
+  - task.target_assets
+  - session.focus_asset
+  - user
+  default: none; the task may concern no design
+produces:
+  result: information
+  detail: A text answer.
+behaviour:
+  may_request_user_input: false
+  may_request_assistance: true
+  readiness_model: false
+  method: deterministic
+  quality_gate: none
+  cost_class: low
+observed:
+  success_rate: null
+  sample_size: 0
+operational:
+  handler: graphic_designer.agents.question
+  step_timeout_seconds: 60
+  max_retries: 1
+  wraps: [questionHandler, ragbot]
+  tools: [rag_pricing, rag_product, answer_design_knowledge, describe_asset, explain_capabilities, explain_cost, explain_last_action]

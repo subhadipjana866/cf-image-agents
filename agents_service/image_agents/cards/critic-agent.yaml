@@ -1,0 +1,50 @@
+id: critic-agent
+name: Critic Agent
+version: 1.0.0
+location: internal
+description: 'Proposes specific improvements to a design from the point of view of graphic
+  design principles: hierarchy, balance, contrast, spacing, typography, colour.'
+skills:
+- id: critique-design
+  summary: Suggest design improvements, each phrased as a change that could be carried out.
+  examples:
+  - Suggest how to improve the design of a1 v2.
+  - Say why a3 v1 looks unbalanced and what would fix it.
+  - Review the typography of a2 v4 and propose improvements.
+  - Assess whether a1 v3 works as a design and what to change.
+not_for:
+- Scoring quality or finding rendering defects.
+- Offering options for a specific change the user has already decided to make.
+- Changing the design.
+required_inputs:
+- name: target_asset
+  meaning: The design version to work on.
+  required: true
+  sources:
+  - task.target_assets
+  - session.focus_asset
+  - user
+- name: intent
+  meaning: Audience and purpose of the design.
+  required: false
+  default: infer from the design
+  sources:
+  - task.constraints
+  - task_record
+produces:
+  result: design_advice
+  detail: An ordered list of suggestions, each an executable change.
+behaviour:
+  may_request_user_input: false
+  may_request_assistance: false
+  readiness_model: false
+  method: deterministic
+  quality_gate: none
+  cost_class: low
+observed:
+  success_rate: null
+  sample_size: 0
+operational:
+  handler: your_package.critic_subgraph
+  step_timeout_seconds: 60
+  max_retries: 1

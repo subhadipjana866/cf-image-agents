@@ -1,0 +1,59 @@
+id: critic-agent
+name: Critic Agent
+version: 1.1.0
+location: internal
+description: 'Proposes specific improvements to a design from the point of view of graphic
+  design principles: hierarchy, balance, contrast, spacing, typography, colour. Also responds
+  when the user dislikes a design without naming what to change.'
+skills:
+- id: critique-design
+  summary: Suggest design improvements, each phrased as a change that could be carried out.
+  examples:
+  - Suggest how to improve the design of a1 v2.
+  - Say why a3 v1 looks unbalanced and what would fix it.
+  - Explain why a1 v1 looks off to the user.
+  - Review the typography of a2 v4 and propose improvements.
+  - Assess whether a1 v3 works as a design and what to change.
+  - The user dislikes a1 v2 without saying why; say what to change.
+not_for:
+- Scoring quality or finding rendering defects.
+- Offering options for a specific change the user has already decided to make.
+- Changing the design.
+required_inputs:
+- name: target_asset
+  meaning: The design version to work on.
+  required: true
+  sources:
+  - task.target_assets
+  - session.focus_asset
+  - user
+- name: intent
+  meaning: Audience and purpose of the design.
+  required: true
+  applies_when: The design was uploaded by the user rather than generated here, and the task
+    does not state its purpose.
+  sources:
+  - task.constraints
+  - task_record
+  - user
+produces:
+  result: design_advice
+  detail: An ordered list of suggestions, each an executable change.
+behaviour:
+  may_request_user_input: false
+  may_request_assistance: false
+  readiness_model: false
+  method: deterministic
+  quality_gate: none
+  cost_class: low
+observed:
+  success_rate: null
+  sample_size: 0
+operational:
+  handler: graphic_designer.agents.critic
+  step_timeout_seconds: 90
+  max_retries: 1
+  wraps: [suggestionManager, critiquepipeline.suggestionCreator, criticismHandler]
+  tools: [resolve_grounding, parse_critique_intent, case_agent, lens_integrity, lens_composition,
+          lens_aesthetic, lens_content, merge_findings, copy_freeze, arbiter, executability_gate,
+          apply_quality_floor, structure_suggestions, rewrite_suggestion]

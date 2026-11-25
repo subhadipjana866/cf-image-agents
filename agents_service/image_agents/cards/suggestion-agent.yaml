@@ -1,0 +1,48 @@
+id: suggestion-agent
+name: Suggestion Agent
+version: 1.0.0
+location: internal
+description: Offers options for a specific change the user is considering, each phrased so
+  it could be carried out as stated.
+skills:
+- id: suggest-options
+  summary: Offer two to four options for a contemplated change.
+  examples:
+  - Suggest colours for the car in a1 v2 that suit the rest of the image.
+  - Offer options for a new headline font in a3 v1.
+  - Suggest ways to treat the background of a2 v2.
+  - Propose a few placements for the logo in a1 v4.
+not_for:
+- General critique of a design when no specific change is in view.
+- Scoring quality.
+- Carrying out the change.
+required_inputs:
+- name: target_asset
+  meaning: The design version to work on.
+  required: true
+  sources:
+  - task.target_assets
+  - session.focus_asset
+  - user
+- name: contemplated_change
+  meaning: The change the user is considering.
+  required: true
+  sources:
+  - task.goal
+produces:
+  result: edit_options
+  detail: Two to four options, each an executable instruction.
+behaviour:
+  may_request_user_input: false
+  may_request_assistance: true
+  readiness_model: false
+  method: deterministic
+  quality_gate: none
+  cost_class: low
+observed:
+  success_rate: null
+  sample_size: 0
+operational:
+  handler: your_package.suggestion_subgraph
+  step_timeout_seconds: 60
+  max_retries: 1

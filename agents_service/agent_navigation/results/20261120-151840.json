@@ -1,0 +1,2294 @@
+{
+  "models": "default=openai:gpt-5.4",
+  "usage": {
+    "calls": 100,
+    "input_tokens": 584801,
+    "output_tokens": 23433,
+    "seconds": 329.6
+  },
+  "results": [
+    {
+      "case": {
+        "id": "gen-catalog",
+        "input": "Make an Instagram post for our Diwali sale",
+        "assets": "none",
+        "expect": [
+          "image-generator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task. The user is asking for creation of an Instagram post promoting a Diwali sale, with no existing asset to edit and no pending or active task context.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Create a new Instagram post image promoting a Diwali sale.",
+            "desired_result": "new_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-generator",
+            "confidence": "high",
+            "analysis": "The task needs a new generated design, with desired_result new_image and no existing asset to edit. Image Generator is the clear fit because it creates new designs from a brief and specifically covers social-post style generation; Image Editor is ruled out because it is not for creating a new design when no existing design is given.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-generator"
+        ]
+      },
+      "got": [
+        "image-generator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "gen-freeform",
+        "input": "Design a wedding invitation for Priya and Arjun with a floral border",
+        "assets": "none",
+        "expect": [
+          "image-generator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new image-generation request with no pending or active tasks to resolve against. I read it as a request to create a wedding invitation featuring the specified names and a floral border, without adding unstated design details.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Create a wedding invitation image for Priya and Arjun with a floral border.",
+            "desired_result": "new_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-generator",
+            "confidence": "high",
+            "analysis": "The task needs a newly generated image from a brief, not an edit or advice. Image Generator directly covers creating new designs, including freeform cases like invitations, and its examples and produces line match this request closely. No existing asset is provided, which rules out Image Editor and other asset-based agents.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-generator"
+        ]
+      },
+      "got": [
+        "image-generator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "gen-new-while-asset-in-focus",
+        "input": "Now create a LinkedIn banner announcing we're hiring a backend engineer",
+        "expect": [
+          "image-generator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new image-generation request, not a response to any pending or active task. I read it as asking for a fresh LinkedIn banner whose purpose is to announce a backend engineer hiring opening, rather than editing the in-focus Instagram post asset.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Create a new LinkedIn banner image that announces the company is hiring a backend engineer.",
+            "desired_result": "new_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-generator",
+            "confidence": "high",
+            "analysis": "The task needs a new image to be created from a brief, not an edit of an existing asset. Image Generator directly covers creating a new design for a stated purpose and format, while Image Editor is explicitly not for creating a new design when no existing design is given.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-generator"
+        ]
+      },
+      "got": [
+        "image-generator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "gen-from-reference",
+        "input": "Make a flyer for our Christmas party in the same style as this one",
+        "expect": [
+          "image-generator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task. The user wants a new flyer created, using the in-focus asset a1 v1 as the style reference; no event details were provided, so the request is read as generating a Christmas party flyer in the same visual style.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Create a new flyer for a Christmas party in the same visual style as asset a1 version 1, the AI-generated Instagram post for a coffee shop grand opening.",
+            "desired_result": "new_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "missing_inputs",
+            "agent_id": "image-generator",
+            "confidence": "high",
+            "analysis": "The task needs a new image created in the style of an existing asset, not an edit to a1 v1. Image Generator directly covers creating a new design from a brief and creating a design in the style of a reference asset; Image Editor is ruled out because it is not for creating a new design when no existing design is given. The task includes the needed reference asset, but the brief lacks the event details needed to fully specify the flyer content.",
+            "missing_inputs": [
+              "A complete brief for the new flyer content, including the Christmas party details such as event text, date, time, location, and any other copy to include."
+            ],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-generator"
+        ]
+      },
+      "got": [
+        "image-generator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "create-more",
+        "input": "Give me 3 more versions of this",
+        "expect": [
+          "image-generator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "There is no pending or active task, so this is a new task. \"This\" most reasonably refers to the in-focus image asset a1 version 1, and \"3 more versions\" asks for three additional variations of that existing design rather than a specific edit.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Create three additional image variations based on asset a1 version 1, the AI-generated Instagram post for a coffee shop grand opening.",
+            "desired_result": "new_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-generator",
+            "confidence": "high",
+            "analysis": "The task needs new_image results in the form of three additional variations of an existing design, not an edit to the current asset. Image Generator explicitly covers creating further variations of an existing design with examples like creating more versions of a design, while Image Editor is explicitly not for creating further variations or alternative versions.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-generator"
+        ]
+      },
+      "got": [
+        "image-generator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "regenerate",
+        "input": "Regenerate it, I want a completely fresh take on the same brief",
+        "expect": [
+          "image-generator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "There is no pending or active task, so this is not an amendment but a new task referring to the focused image asset a1 version 1. \"Regenerate it\" and \"a completely fresh take on the same brief\" indicate the user wants a new image based on the same underlying brief as the current Instagram post, not an edit to the existing image.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Generate a new Instagram post image as a completely fresh take on the same brief as asset a1 version 1, which is an AI-generated post for a coffee shop grand opening.",
+            "desired_result": "new_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-generator",
+            "confidence": "high",
+            "analysis": "The task needs a new image that is a fresh take on the same brief as an existing asset, which matches the image-generator card's regenerate skill exactly. Image Editor is excluded because this is not a change to the existing design, and create-more/regenerate on Image Generator explicitly covers new alternatives from an existing design brief.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-generator"
+        ]
+      },
+      "got": [
+        "image-generator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-background",
+        "input": "Change the background to navy blue",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new request to edit the image currently in focus, since there is no pending or active task. I read \"the background\" as referring to the background of asset a1 version 1, and the user wants that background changed to navy blue.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Change the background of asset a1 version 1 to navy blue.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed image: change the background of existing asset a1 v1 to navy blue. Image Editor directly covers background replacement and produces a changed_image; Image Generator is not for changing an existing design, and Slop Terminator is limited to artifact repair rather than a requested background edit.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-headline-text",
+        "input": "Change the headline to \"Now Open\"",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new edit request on the in-focus image asset a1 version 1. The user wants the existing headline text in the Instagram post changed from \"Grand Opening\" to \"Now Open\".",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Change the headline text block tb1 in asset a1 version 1 to read \"Now Open\".",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed_image: edit existing asset a1 v1 by changing text block tb1 to new wording. Image Editor directly covers changing the wording of a text block and returns a new version; other candidates either advise, assess, generate new designs, or extract layers rather than make the requested edit.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-several-changes",
+        "input": "Make the headline bigger, change the background to navy and make the CTA orange",
+        "expect_all": "image-editor"
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new request to edit the focused image asset a1 version 1. The user asks for three visual changes on three different targets: enlarge the headline text, make the background navy, and make the CTA orange.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Make the headline text block tb1 ('Grand Opening') bigger in asset a1 version 1.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed_image and asks for a specific edit to an existing text block in a known asset. Image Editor directly covers changing the typography of a text block, with an example of enlarging a headline; other candidates either advise, evaluate, generate new designs, or only extract layers.",
+            "missing_inputs": [],
+            "capability_gap": null
+          },
+          {
+            "id": "T2",
+            "goal": "Change the background of asset a1 version 1 to navy.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [
+              "T1"
+            ],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed_image and specifies a concrete background change on an existing asset. Image Editor explicitly covers changing the background, including an example of changing a background to navy blue, which matches this task closely.",
+            "missing_inputs": [],
+            "capability_gap": null
+          },
+          {
+            "id": "T3",
+            "goal": "Change the CTA text block tb3 ('Visit us') in asset a1 version 1 to orange.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [
+              "T2"
+            ],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed_image and asks for a specific colour change to the CTA text block/element in an existing asset. Image Editor covers restyling elements and editing text block typography, and can handle the assumed CTA target; alternatives do not perform image changes.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor",
+          "image-editor",
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor",
+        "image-editor",
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-erase",
+        "input": "Remove the cup on the left side",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new edit request on the current focus image, since there is no pending or active task. I read \"the cup on the left side\" as a reference to an object within asset a1 version 1, and the user wants that object removed from the image.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Remove the cup on the left side from asset a1 version 1.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed_image that removes a specific object from an existing asset. Image Editor directly covers removing an object or background with examples like removing an item from one side of an image, while Slop Terminator is only for repairing AI artifacts and not for a specific requested non-artifact change.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-brightness-exact",
+        "input": "Increase brightness by 20",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new image-editing request with no pending or active tasks to resolve against. \"Increase brightness by 20\" is best read as changing the focused image as a whole by raising its brightness level by 20 units or percent as stated, without altering any specific element separately.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Increase the brightness of the whole image in asset a1 version 1 by 20.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed_image: increasing the brightness of asset a1 v1 by 20 across the whole image. Image Editor directly covers whole-image tone adjustments with an example that matches this request almost exactly; Slop Terminator and Image Evaluator are not for requested non-artifact edits or for changing images in this way.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-style-switch",
+        "input": "Make it look Bauhaus",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task referring to the in-focus image asset a1 version 1. \"Make it look Bauhaus\" is best read as a request to restyle the whole existing design in the Bauhaus aesthetic, without changing any specific text unless needed to achieve that style.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Restyle asset a1 version 1 so the whole Instagram post for the coffee shop grand opening looks Bauhaus.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed_image: restyling an existing asset so the whole post looks Bauhaus while keeping the existing text content unless needed for style. Image Editor is the best fit because it changes existing designs, including whole-image and multi-part stylistic changes; Image Generator is not for changing an existing design, and Critic Agent would only advise rather than make the change.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-platform-resize",
+        "input": "Make an Instagram story and a LinkedIn version of this",
+        "expect_all": "image-editor"
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task referring to the in-focus asset a1 version 1, an Instagram post for a coffee shop grand opening. I read \"this\" as that existing design and the user wants two adapted deliverables: an Instagram Story version and a LinkedIn version based on the current post.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Create an Instagram Story version of asset a1 version 1, adapting the existing coffee shop grand opening post into a story-format image.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed_image based on an existing asset, specifically adapting a1 v1 into another format. Image Editor explicitly covers reflowing or resizing a design for another platform, with examples including making versions for Instagram Story and other platforms; Image Generator is weaker because its card says it is not for changing an existing design.",
+            "missing_inputs": [],
+            "capability_gap": null
+          },
+          {
+            "id": "T2",
+            "goal": "Create a LinkedIn version of asset a1 version 1, adapting the existing coffee shop grand opening post for LinkedIn use.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [
+              "T1"
+            ],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "This also needs a changed_image adapting an existing design for another platform. Image Editor is the direct fit because its change-canvas skill includes making platform-specific versions of an existing design; Image Generator is again ruled out by not_for because the task is not to create a fresh new design.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor",
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor",
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-upscale",
+        "input": "Upscale this for print",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task referring to the in-focus image asset a1 version 1. I read \"Upscale this for print\" as a request to increase the resolution of the existing image so it is suitable for printing, without specifying print dimensions or DPI.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Upscale asset a1 version 1 so the whole image is suitable for print output.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed_image by upscaling an existing asset for print output. Image Editor directly covers this with its enhance-image skill, including examples like \"Upscale a1 v2 for print,\" and it is not excluded by its not_for list; other candidates either assess, advise, generate new designs, or repair artifacts rather than perform a specified upscale.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-undo",
+        "input": "Undo the last change, I liked the previous version better",
+        "assets": "edited",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "There is no pending or active task, so this is not an amendment or input to a suspended task. The user is asking to revert the focused image asset a1 from version 2 to its previous version because they preferred the earlier state before the background was changed to navy.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Revert asset a1 from version 2 to the previous version, restoring the earlier Instagram post design the user preferred.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed image that restores an earlier version of an existing asset. Image Editor explicitly has the skill restore-version with examples like undoing the last change and bringing back an earlier version, which matches this goal directly; other agents either assess, advise, generate new assets, or extract layers rather than restore a prior version.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-export",
+        "input": "Can I get this as a transparent PNG?",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task referring to the in-focus image asset a1 version 1. I read \"this\" as the current Instagram post image, and \"as a transparent PNG\" as a request to convert or export it with transparency, which implies removing any non-transparent background as needed.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Create a transparent PNG version of asset a1 version 1.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed image returned in another file format, specifically a transparent PNG version of existing asset a1 v1. Image Editor directly covers export-format and can also handle any needed background removal as part of changing image content, while Layering Agent only extracts elements as layers and does not return the edited design as the result.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-crop-square",
+        "input": "Crop it to a square",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new edit request, not input to a pending task, because there is no pending or active task. \"It\" refers to the in-focus image asset a1 version 1, and the user wants that existing image cropped to a square format.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Crop image asset a1 version 1 to a square aspect ratio.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed image: crop existing asset a1 v1 to a square aspect ratio. Image Editor directly covers crop and resize tasks under its change-canvas skill, with matching examples, and it can choose an appropriate crop automatically when no exact dimensions or crop area are given.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "edit-no-asset",
+        "input": "Make the logo bigger",
+        "assets": "none",
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task to edit an existing image, but there is no asset in focus and no conversation history to resolve what image or which logo is meant. The request is clear in intent\u2014enlarge the logo\u2014but the target image and logo reference cannot be identified from the available context.",
+        "tasks": [],
+        "clarification": {
+          "request": "Which image should the logo be made bigger in?",
+          "options": [
+            "The currently shown image",
+            "A specific image you uploaded in this session",
+            "A new image you want created with a bigger logo"
+          ],
+          "why": "There is no referenced asset or focused image available, so the target image for the logo resize cannot be determined."
+        },
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "clarify"
+        ]
+      },
+      "got": [
+        "clarify"
+      ],
+      "ok": false
+    },
+    {
+      "case": {
+        "id": "layer-logo",
+        "input": "Separate the logo as its own layer",
+        "expect": [
+          "layering-agent"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task to modify the focused image asset, since there is no pending or active task. I read \"Separate the logo as its own layer\" as a request to isolate the logo element from asset a1 version 1 as a distinct editable layer.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Separate the logo in asset a1 version 1 into its own editable layer.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "layering-agent",
+            "confidence": "high",
+            "analysis": "The task needs the logo from a1 v1 separated into its own editable layer. Layering Agent directly covers this with its extract-layer skill, including examples like extracting a logo as a separate layer, while Image Editor is explicitly not for extracting an element as a layer when the layer itself is the result wanted.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "layering-agent"
+        ]
+      },
+      "got": [
+        "layering-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "layer-cutout",
+        "input": "Cut out the coffee cup so I get it on a transparent background",
+        "expect": [
+          "layering-agent"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task, not a reply to any pending request, because there is no pending or active task. I read it as a request to isolate the coffee cup from the focused image and deliver it as a cutout with transparency.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Extract the coffee cup from asset a1 version 1 as a standalone cutout on a transparent background.",
+            "desired_result": "extracted_element",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "layering-agent",
+            "confidence": "high",
+            "analysis": "The task needs an extracted element as the result: the coffee cup isolated as a standalone cutout on a transparent background. Layering Agent directly covers this with examples like isolating a product from its background as a layer and cutting it out so the user gets it on a transparent background; Image Editor is explicitly not for extracting an element as a layer when the layer itself is the result wanted.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "layering-agent"
+        ]
+      },
+      "got": [
+        "layering-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "layer-text",
+        "input": "Make all the text editable as separate layers",
+        "expect": [
+          "layering-agent"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task on the current focus image, asset a1 version 1. The user wants the existing text in that image separated into editable text layers rather than flattened into the image.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Convert the text in asset a1 version 1 into editable separate text layers, with each text block on its own layer.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "layering-agent",
+            "confidence": "high",
+            "analysis": "The task needs the existing text in a1 v1 separated into editable individual text layers, not a changed rendered image or advice. The Layering Agent directly covers this with examples like separating a headline text block as an editable text layer and making all text editable as separate layers; Image Editor is ruled out because its card says it is not for extracting an element as a layer when the layer itself is the result wanted.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "layering-agent"
+        ]
+      },
+      "got": [
+        "layering-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "slop-hands",
+        "input": "Her hands look weird, fix them",
+        "assets": "person",
+        "expect": [
+          "slop-terminator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task to edit the currently focused image, since there is no pending or active task to amend. The user wants the woman's hands in asset a1 version 1 corrected because they look unnatural.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Correct the woman's hands in asset a1 version 1 so they look natural and anatomically plausible, while preserving the rest of the lifestyle ad image.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "slop-terminator",
+            "confidence": "high",
+            "analysis": "The task needs a changed_image that specifically repairs an AI generation artifact: unnatural hands in an existing generated asset while preserving the rest. The strongest candidates are Slop Terminator and Image Editor, but Image Editor is explicitly not for repairing malformed hands or other AI generation artifacts, while Slop Terminator directly covers detecting and repairing such artifacts with matching examples.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "slop-terminator"
+        ]
+      },
+      "got": [
+        "slop-terminator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "slop-check",
+        "input": "Check this for AI artifacts",
+        "expect": [
+          "slop-terminator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task about the in-focus image asset a1 version 1. I read \"Check this for AI artifacts\" as a request to assess the image for visible AI-generation flaws rather than to edit it.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Assess asset a1 version 1 for visible AI-generated artifacts and report any issues found.",
+            "desired_result": "quality_assessment",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "slop-terminator",
+            "confidence": "high",
+            "analysis": "The task needs a quality_assessment specifically about visible AI-generated artifacts, with reporting only and no edit. The strongest fit is Slop Terminator because it explicitly has a detect-artifacts skill with matching examples and produces a quality assessment when only checking; Image Evaluator is a weaker alternate because it reports general defects but its card does not specifically cover AI artifact detection and its not_for excludes finding AI generation artifacts.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "slop-terminator"
+        ]
+      },
+      "got": [
+        "slop-terminator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "critic-improve",
+        "input": "How can I make this design better?",
+        "expect": [
+          "critic-agent"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task asking for feedback on the focused image, not a request to edit it directly. I interpret it conservatively as a request for design advice on how to improve asset a1 version 1.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Assess the design of asset a1 version 1 and provide actionable advice on how to improve the Instagram post for the coffee shop grand opening.",
+            "desired_result": "design_advice",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "critic-agent",
+            "confidence": "high",
+            "analysis": "The task needs design_advice: an assessment of the existing post with actionable recommendations, not a quality score and not direct edits. Critic Agent is the clear fit because it proposes executable design improvements and explicitly covers cases where the user wants to know what to change; Image Evaluator was a serious alternate but its card is for scoring defects and is explicitly not for suggesting improvements.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "critic-agent"
+        ]
+      },
+      "got": [
+        "critic-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "critic-unbalanced",
+        "input": "Why does this look so unbalanced?",
+        "expect": [
+          "critic-agent"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "There is no pending or active task, so this is a new task about the focused image asset a1 version 1. The wording asks for an explanation of a perceived design problem rather than a direct edit, so the conservative reading is a request for composition/design feedback on why the current Instagram post feels unbalanced.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Assess the composition of asset a1 version 1, the AI-generated Instagram post for a coffee shop grand opening, and explain why it appears unbalanced.",
+            "desired_result": "design_advice",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "critic-agent",
+            "confidence": "high",
+            "analysis": "The task needs design advice explaining why the composition feels unbalanced and what is wrong with the layout. Critic Agent directly covers design critique with examples about imbalance and explaining why a design looks off, while Image Evaluator is for scoring quality and defects and is explicitly not for explaining why a design looks unbalanced or unappealing.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "critic-agent"
+        ]
+      },
+      "got": [
+        "critic-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "critic-dislike",
+        "input": "I don't like it",
+        "expect_any": [
+          [
+            "critic-agent"
+          ],
+          [
+            "clarify"
+          ]
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "The user is reacting to the current focus image, asset a1 version 1, but gives no specific change or question. With no pending or active task and no details about what they dislike, the most conservative reading is a request for guidance on what to improve rather than an automatic edit.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Assess asset a1 version 1, the AI-generated Instagram post for a coffee shop grand opening, and identify what is not working well about the design and what could be improved.",
+            "desired_result": "design_advice",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "critic-agent",
+            "confidence": "high",
+            "analysis": "The task asks for design_advice: identify what is not working in a design and what could be improved. Critic Agent directly covers this with examples like explaining why a design looks off and proposing executable improvements, while Image Evaluator is ruled out because it scores quality and defects but is not for suggesting improvements.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "critic-agent"
+        ]
+      },
+      "got": [
+        "critic-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "suggest-colours",
+        "input": "What colours would work for the button?",
+        "expect": [
+          "suggestion-agent"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "The user is asking for advice, not a direct edit. With no pending or active task, this is a new task to suggest suitable button colours for the in-focus Instagram post, likely referring to the CTA button text block \"Visit us\" on asset a1 version 1.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Suggest button colour options for the CTA button in asset a1 version 1, the AI-generated Instagram post for a coffee shop grand opening, so the button works well with the existing design.",
+            "desired_result": "design_advice",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "suggestion-agent",
+            "confidence": "high",
+            "analysis": "The task needs edit options for a specific contemplated change: colour choices for the CTA button that fit the existing design. Suggestion Agent directly covers this with examples like suggesting colours for an element, while Critic Agent is ruled out because its card says it is not for offering options for a specific change the user has already decided to make.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "suggestion-agent"
+        ]
+      },
+      "got": [
+        "suggestion-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "suggest-headlines",
+        "input": "Give me some catchier headline ideas",
+        "expect": [
+          "suggestion-agent"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task asking for copy suggestions based on the current focused image. The most reasonable reading is a request for headline options for the existing Instagram post, specifically to improve the current headline text rather than to edit the image yet.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Suggest catchier headline options for the headline text in asset a1 version 1, the AI-generated Instagram post for a coffee shop grand opening. Base the suggestions on replacing the current headline 'Grand Opening'.",
+            "desired_result": "edit_options",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "suggestion-agent",
+            "confidence": "high",
+            "analysis": "The task needs edit_options: alternative headline wordings for an existing text block, not a critique or an immediate image edit. Suggestion Agent directly covers this with examples including offering catchier wordings for a headline, while Critic Agent is ruled out because it is not for offering options for a specific change the user has already decided to make.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "suggestion-agent"
+        ]
+      },
+      "got": [
+        "suggestion-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "eval-score",
+        "input": "Rate this design out of 10",
+        "expect": [
+          "image-evaluator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "The user is asking for an evaluation of the currently focused design rather than requesting any edit. With asset a1 version 1 in focus and no pending or active tasks, this is a new task to assess the design and provide a score out of 10.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Assess the overall design quality of asset a1 version 1 and give it a rating out of 10.",
+            "desired_result": "quality_assessment",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-evaluator",
+            "confidence": "high",
+            "analysis": "The task needs a quality assessment with a rating out of 10 for an existing design. Image Evaluator directly covers scoring a design and listing defects, with examples including evaluating quality and scoring overall execution; Critic Agent is close on assessment but its card is for improvement advice and explicitly not for scoring quality.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-evaluator"
+        ]
+      },
+      "got": [
+        "image-evaluator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "eval-is-it-good",
+        "input": "Is this good?",
+        "expect_any": [
+          [
+            "image-evaluator"
+          ],
+          [
+            "critic-agent"
+          ]
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "The user is reacting to the in-focus image asset a1 version 1 and asking for an evaluation rather than requesting a specific edit. With no pending or active tasks, the most conservative reading is a quality assessment of the current Instagram post design.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Assess the overall quality and effectiveness of asset a1 version 1, an AI-generated Instagram post for a coffee shop grand opening, and determine whether it works well as a design.",
+            "desired_result": "quality_assessment",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-evaluator",
+            "confidence": "high",
+            "analysis": "The task needs a quality assessment of an existing design and asks whether it works well overall. The strongest match is Image Evaluator, whose skill examples explicitly include evaluating quality, scoring execution, and checking whether a design meets its brief; Critic Agent is a nearby candidate but is for proposing improvements rather than scoring quality.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-evaluator"
+        ]
+      },
+      "got": [
+        "image-evaluator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "manual-crop",
+        "input": "Let me crop it myself",
+        "expect": [
+          "manual-ops"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "The user is not asking the system to crop the image; they want to do the crop manually. With no pending or active task, this is a new user-performed task to open the appropriate editing interface for the focused image.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Open the crop tool for asset a1 version 1 so the user can crop the AI-generated Instagram post for a coffee shop grand opening by hand.",
+            "desired_result": "changed_image",
+            "performed_by": "user",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "manual-ops",
+            "confidence": "high",
+            "analysis": "The task needs the crop tool to be opened on asset a1 v1 so the user can crop it by hand. ManualOps directly covers this with the specific skill open-crop-tool, and its card explicitly supports user-performed interface opening for design edits. No other candidate agents are available, and the required target asset is present.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "manual-ops"
+        ]
+      },
+      "got": [
+        "manual-ops"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "manual-brightness",
+        "input": "I want to drag the brightness slider myself",
+        "expect": [
+          "manual-ops"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new user-performed task, not a request for the system to edit the image directly. The user wants the manual editing interface opened so they can adjust the brightness of the focused image themselves.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Open the manual editing interface for asset a1 version 1 so the user can adjust the image brightness themselves with a brightness slider.",
+            "desired_result": "changed_image",
+            "performed_by": "user",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "manual-ops",
+            "confidence": "high",
+            "analysis": "The task needs a user-operated interface to adjust brightness on asset a1 v1, not a system-made image change. ManualOps directly covers this via the open-canvas-control skill, whose examples explicitly include opening a brightness control for the user, and its card permits user-performed interface opening.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "manual-ops"
+        ]
+      },
+      "got": [
+        "manual-ops"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "manual-add-funds",
+        "input": "Add 20 dollars to my account",
+        "assets": "none",
+        "expect": [
+          "manual-ops"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new account-related request with no pending or active tasks. I read it as the user wanting the interface opened so they can add funds to their account, with the amount pre-filled as 20 dollars.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Open the account funding interface so the user can add 20 dollars to their account.",
+            "desired_result": "account_action",
+            "performed_by": "user",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "manual-ops",
+            "confidence": "high",
+            "analysis": "The task needs an opened account-funding interface for the user to act in, with 20 dollars pre-filled, and its desired result is an account_action. ManualOps directly covers this with the open-add-funds skill, is internal, and is explicitly for user-performed interface opening rather than performing the account change itself.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "manual-ops"
+        ]
+      },
+      "got": [
+        "manual-ops"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "manual-subscription",
+        "input": "Open my subscription settings",
+        "assets": "none",
+        "expect": [
+          "manual-ops"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task with no pending or active work to amend. The user wants access to the subscription management interface, which is an account action that must be performed by the user.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Open the subscription settings interface so the user can manage their subscription.",
+            "desired_result": "account_action",
+            "performed_by": "user",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "manual-ops",
+            "confidence": "high",
+            "analysis": "The task needs an interface opened for the user to manage their subscription, with desired_result account_action and performed_by user. ManualOps is the only candidate and its open-account-settings skill explicitly covers subscription settings; its not_for rules out carrying out account changes, but opening the settings interface is exactly what this task asks for.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "manual-ops"
+        ]
+      },
+      "got": [
+        "manual-ops"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "question-cost",
+        "input": "How much does one generation cost?",
+        "expect": [
+          "question-handler"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new question about pricing, not a request to edit or generate an image and not a reply to any pending task. I read it as a request for information about the cost of a single image generation.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Provide information about how much one image generation costs.",
+            "desired_result": "information",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "question-handler",
+            "confidence": "high",
+            "analysis": "The task needs an informational text answer about system pricing, not a design change, critique, or small talk. Question Handler explicitly covers information about the system and its examples include explaining how much a generation costs, which is a direct match.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "question-handler"
+        ]
+      },
+      "got": [
+        "question-handler"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "question-formats",
+        "input": "What file formats can you export?",
+        "expect": [
+          "question-handler"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "There is no pending or active task, so this is a new task. The user is asking for information about available export file formats, most likely in the context of the current image session, rather than requesting any image change.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Provide information about which file formats are available for exporting images in this session.",
+            "desired_result": "information",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "question-handler",
+            "confidence": "high",
+            "analysis": "The task needs an informational text answer about supported export formats, not an export action or any design change. Question Handler directly covers requests for information and its examples explicitly include explaining which file formats the system can export; Image Editor is only for actually exporting a design.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "question-handler"
+        ]
+      },
+      "got": [
+        "question-handler"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "question-kerning",
+        "input": "What is kerning?",
+        "expect": [
+          "question-handler"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "There is no pending or active task, so this is a new task. The user is asking for a definition of a design term, which is best read as a request for information rather than an image edit.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Explain what kerning means in typography and design.",
+            "desired_result": "information",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "question-handler",
+            "confidence": "high",
+            "analysis": "The task asks for general information about a design concept, with desired_result \"information\". Question Handler explicitly covers explaining graphic design concepts and gives \"Explain what kerning is\" as an example, while other agents either change, assess, or advise on designs rather than provide information.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "question-handler"
+        ]
+      },
+      "got": [
+        "question-handler"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "chitchat-thanks",
+        "input": "thanks, that's great!",
+        "expect": [
+          "chitchat-handler"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a brief acknowledgement of earlier work, not a request to perform any further action. With no pending or active task, the safest reading is a conversational exchange only.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Acknowledge the user's thanks in a brief conversational reply.",
+            "desired_result": "conversation",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "chitchat-handler",
+            "confidence": "high",
+            "analysis": "The task needs a brief conversational acknowledgement of thanks, with desired_result \"conversation\". ChitChat Handler directly covers small talk and explicitly lists acknowledging the user's thanks as an example, while Question Handler is for information requests and the other agents create, assess, advise on, or edit designs. The exact skill match and the not_for lines decide it clearly.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "chitchat-handler"
+        ]
+      },
+      "got": [
+        "chitchat-handler"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "chitchat-hello",
+        "input": "hi there",
+        "assets": "none",
+        "expect": [
+          "chitchat-handler"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "There is no pending or active task, and the input is a greeting rather than a request to generate, edit, assess, advise, inform, or open a tool. I read it as a brief conversational turn with no image-specific action requested.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Respond to the sender's greeting with a brief conversational exchange.",
+            "desired_result": "conversation",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "chitchat-handler",
+            "confidence": "high",
+            "analysis": "The task needs a brief social reply and its desired_result is conversation. ChitChat Handler directly covers greetings and pleasantries and produces a short text reply; Question Handler is not a better fit because this is not a request for information.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "chitchat-handler"
+        ]
+      },
+      "got": [
+        "chitchat-handler"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "chain-edit-then-manual-crop",
+        "input": "Change the background to navy and then let me crop it",
+        "expect": [
+          "image-editor",
+          "manual-ops"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new request about the in-focus image a1 version 1. The user wants the system to first change the background color, then open a cropping interface so they can crop the edited result themselves.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Change the background of asset a1 version 1 to navy.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed image: specifically replacing the background colour of existing asset a1 v1 with navy. Image Editor directly covers background changes with an example matching this task, while other candidates are ruled out because they advise, assess, generate new designs, or repair artifacts rather than make a specified edit.",
+            "missing_inputs": [],
+            "capability_gap": null
+          },
+          {
+            "id": "T2",
+            "goal": "Open the crop tool on the edited result of asset a1 version 1 so the user can crop it themselves.",
+            "desired_result": "changed_image",
+            "performed_by": "user",
+            "depends_on": [
+              "T1"
+            ],
+            "supports_task_id": null,
+            "decision": "missing_inputs",
+            "agent_id": "manual-ops",
+            "confidence": "high",
+            "analysis": "The task is performed_by user and asks to open the crop tool so the user can crop the edited result themselves, which requires an interface-opening agent rather than one that performs the crop. ManualOps has an exact open-crop-tool skill, but its required target asset is the edited result of T1, which does not yet exist in the task inputs.",
+            "missing_inputs": [
+              "The edited target asset produced by T1, so the crop tool can be opened on the resulting image rather than on a1 v1."
+            ],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor",
+          "manual-ops"
+        ]
+      },
+      "got": [
+        "image-editor",
+        "manual-ops"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "chain-edit-then-more",
+        "input": "Make the headline bigger and give me 2 more versions",
+        "expect": [
+          "image-editor",
+          "image-generator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task on the focused image asset a1 version 1, since there is no pending or active task to amend. I read it as two requested results in sequence: enlarge the existing headline text on the Instagram post, then produce two additional edited versions of the image with that headline change applied.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Make the headline text block tb1 ('Grand Opening') bigger in asset a1 version 1.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed_image: an existing design must be edited by making a named text block bigger. Image Editor directly covers changing typography of a text block and producing a new version, with examples like enlarging a headline. Other candidates either advise, evaluate, generate new assets, or extract layers rather than carry out this edit.",
+            "missing_inputs": [],
+            "capability_gap": null
+          },
+          {
+            "id": "T2",
+            "goal": "Create 2 more edited versions of asset a1 version 1 after the headline text block tb1 ('Grand Opening') has been made bigger.",
+            "desired_result": "edit_options",
+            "performed_by": "system",
+            "depends_on": [
+              "T1"
+            ],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-generator",
+            "confidence": "medium",
+            "analysis": "The task asks for two alternative edited variants based on an existing design after T1, which is creation of further variations rather than a single direct edit. Image Generator explicitly covers creating more variations of an existing design and returns each as a new asset; Image Editor is ruled out because its card says it is not for creating further variations or alternative versions. The desired_result label says edit_options, but the goal and constraints clearly require actual new versions, so Image Generator is the best card match for the task itself.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor",
+          "image-generator"
+        ]
+      },
+      "got": [
+        "image-editor",
+        "image-generator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "chain-edit-then-slop",
+        "input": "Remove the cup on the left, then check the result for AI artifacts",
+        "expect": [
+          "image-editor",
+          "slop-terminator"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new multi-step request about the current focus image, asset a1 version 1. The user wants one edit performed first and then a separate quality check on the edited result, specifically for AI artifacts.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Remove the cup on the left from asset a1 version 1.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed image that removes a specific object from an existing asset. Image Editor directly covers removing an object or background and is the best fit; Slop Terminator is not for specific requested changes that are not artifact repair, and Layering Agent only extracts elements rather than removing them.",
+            "missing_inputs": [],
+            "capability_gap": null
+          },
+          {
+            "id": "T2",
+            "goal": "Assess the edited version of asset a1 for AI artifacts after the left cup has been removed.",
+            "desired_result": "quality_assessment",
+            "performed_by": "system",
+            "depends_on": [
+              "T1"
+            ],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "slop-terminator",
+            "confidence": "high",
+            "analysis": "The task needs a quality assessment specifically for AI artifacts on the edited result of T1. Slop Terminator explicitly covers checking a design for AI generation artifacts without changing it, which is more specific than Image Evaluator's general quality scoring.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor",
+          "slop-terminator"
+        ]
+      },
+      "got": [
+        "image-editor",
+        "slop-terminator"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "chain-layer-and-critique",
+        "input": "Separate the logo as a layer and tell me how to improve the layout",
+        "expect": [
+          "layering-agent",
+          "critic-agent"
+        ],
+        "unordered": true
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new multi-part request about the in-focus asset a1 version 1. I read it as asking for an element extraction of the logo from the existing image, plus separate design advice about the layout rather than an automatic layout change.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Extract the logo from asset a1 version 1 as a separate layer.",
+            "desired_result": "extracted_element",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "layering-agent",
+            "confidence": "high",
+            "analysis": "The task needs an extracted element layer from an existing design. Layering Agent directly covers separating a named element as its own layer, with examples including extracting a logo; Image Editor is explicitly not for extracting an element as a layer when the layer itself is the result wanted.",
+            "missing_inputs": [],
+            "capability_gap": null
+          },
+          {
+            "id": "T2",
+            "goal": "Assess the layout of asset a1 version 1 and provide advice on how to improve it.",
+            "desired_result": "design_advice",
+            "performed_by": "system",
+            "depends_on": [
+              "T1"
+            ],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "critic-agent",
+            "confidence": "high",
+            "analysis": "The task needs design advice about the layout, not a changed image or a quality score. Critic Agent is the best fit because it proposes specific design improvements and explicitly covers explaining why a design looks unbalanced or off and what to change; Image Evaluator assesses quality and defects but is not for suggesting improvements.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "layering-agent",
+          "critic-agent"
+        ]
+      },
+      "got": [
+        "layering-agent",
+        "critic-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "none-video",
+        "input": "Turn this into a 10 second video with music",
+        "expect": [
+          "none"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task on the current focus asset, asking to convert the existing Instagram post image into a short video. I read \"this\" as referring to asset a1 version 1, and \"with music\" as a requirement for the video output rather than a request for advice or tool access.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Create a 10 second video based on asset a1 version 1, using the existing Instagram post as the source and including music.",
+            "desired_result": "other",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "no_capable_agent",
+            "agent_id": null,
+            "confidence": "high",
+            "analysis": "The task needs creation of a new 10-second video derived from an existing image asset, with music. None of the candidate internal agents cover video generation or animation: Image Generator creates new static designs and variations, while Image Editor only changes existing images and is explicitly not for creating further variations or alternative versions in this way. Because no card in the registry offers video creation from an image source, there is no capable agent.",
+            "missing_inputs": [],
+            "capability_gap": "No agent in the registry can create an animated video from an existing design asset, including timing/motion and music."
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "none"
+        ]
+      },
+      "got": [
+        "none"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "none-print-shipping",
+        "input": "Print 500 copies and ship them to my office",
+        "expect": [
+          "none"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new task. The user is asking for a physical production and delivery action for the in-focus design asset, specifically printing 500 copies and shipping them to the user's office.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Arrange printing of 500 copies of asset a1 version 1, the AI-generated Instagram post for a coffee shop grand opening, and ship them to the user's office.",
+            "desired_result": "other",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "no_capable_agent",
+            "agent_id": null,
+            "confidence": "high",
+            "analysis": "This task needs a real-world print-ordering and shipping action, not image creation, editing, evaluation, advice, or information. None of the candidate internal agents has a skill or produced result covering arranging printing and delivery, so there is no capable agent in the registry for the task as a whole.",
+            "missing_inputs": [],
+            "capability_gap": "Arrange physical printing of an asset in a specified quantity and ship the printed copies to a destination."
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "none"
+        ]
+      },
+      "got": [
+        "none"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "clarify-contradiction",
+        "input": "Make it minimalist and add confetti, balloons, stars, a banner and a ribbon",
+        "expect": [
+          "clarify"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "This is a new request to edit the focused image, asset a1 version 1. The user asks for the image to be made minimalist while also adding several decorative elements, which creates a direct contradiction because those requirements cannot both be satisfied as stated.",
+        "tasks": [],
+        "clarification": {
+          "request": "You asked to make the image \"minimalist\" and also to \"add confetti, balloons, stars, a banner and a ribbon.\" Which direction do you want?",
+          "options": [
+            "Add all five elements in a simple minimalist style",
+            "Keep it minimalist and add only one or two of those elements",
+            "Add all five elements and keep it festive rather than minimalist"
+          ],
+          "why": "These instructions conflict, so the intended final look cannot be stated confidently without your choice."
+        },
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [
+          {
+            "between": [
+              "Make it minimalist",
+              "add confetti, balloons, stars, a banner and a ribbon"
+            ],
+            "kind": "contradiction",
+            "explanation": "A minimalist design reduces visual elements, while adding all of these decorations increases visual complexity and clutter.",
+            "resolutions": [
+              "Add confetti, balloons, stars, a banner and a ribbon, but render them in a simple minimalist style",
+              "Make it minimalist and add only one or two of those decorative elements",
+              "Add all five decorative elements and keep or increase the current celebratory style instead of making it minimalist"
+            ]
+          }
+        ],
+        "agents": [
+          "clarify"
+        ]
+      },
+      "got": [
+        "clarify"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "clarify-gibberish",
+        "input": "asdfgh",
+        "expect_any": [
+          [
+            "clarify"
+          ],
+          [
+            "chitchat-handler"
+          ],
+          [
+            "none"
+          ]
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "The input is a bare string with no clear meaning and there is no pending or active task to resolve it against. It does not provide enough information to infer a concrete image, account, information, or conversation task.",
+        "tasks": [],
+        "clarification": {
+          "request": "What would you like me to do? \"asdfgh\" does not specify a task.",
+          "options": [
+            "Describe the image you want to create",
+            "Say what change you want made to asset a1 version 1",
+            "Ask for feedback or information about asset a1 version 1",
+            "Ask to open a tool so you can edit the image yourself"
+          ],
+          "why": "No actionable intent can be determined from the input alone."
+        },
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "clarify"
+        ]
+      },
+      "got": [
+        "clarify"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "pending-support-colours",
+        "input": "what colours would go well here?",
+        "pending_task": {
+          "id": "k7",
+          "goal": "Change the colour of the car in a1 v1",
+          "requested": "Which colour should the car be?",
+          "options": [],
+          "agent_id": "image-editor"
+        },
+        "expect": [
+          "suggestion-agent"
+        ]
+      },
+      "route": {
+        "input_type": "supporting_task",
+        "analysis": "There is a pending task asking the user to choose a colour, and this input does not supply a specific colour. Instead, it asks for help deciding, so it is best read as a supporting task to suggest suitable colour options in the context of the image already in focus.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Suggest colour options for the car in asset a1 version 1 that would suit the AI-generated Instagram post for a coffee shop grand opening.",
+            "desired_result": "edit_options",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": "k7",
+            "decision": "assign",
+            "agent_id": "suggestion-agent",
+            "confidence": "high",
+            "analysis": "The task needs edit_options: a few suitable colour options for a specific contemplated change to asset a1 v1. Suggestion Agent directly covers this with matching skill examples, while Critic Agent is ruled out because it is not for offering options for a specific change the user has already decided to make.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "suggestion-agent"
+        ]
+      },
+      "got": [
+        "suggestion-agent"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "pending-pick-option",
+        "input": "the second",
+        "pending_task": {
+          "id": "k7",
+          "goal": "Change the colour of the car in a1 v1",
+          "requested": "Which colour should the car be?",
+          "options": [
+            "warm sunset tones",
+            "cool blue dusk",
+            "neutral daylight"
+          ],
+          "agent_id": "image-editor"
+        },
+        "expect": [
+          "pending"
+        ]
+      },
+      "route": {
+        "input_type": "input_for_pending_task",
+        "analysis": "There is a pending task asking the user to choose from three options, and the input \"the second\" directly supplies that choice. I resolve it against the listed options for pending task k7, so this is plain input for the pending task rather than a new task or amendment.",
+        "tasks": [],
+        "clarification": null,
+        "pending_input": {
+          "task_id": "k7",
+          "input": "cool blue dusk",
+          "agent_id": "image-editor"
+        },
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "pending"
+        ]
+      },
+      "got": [
+        "pending"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "pending-field-answer",
+        "input": "30% off, valid till Sunday",
+        "assets": "none",
+        "pending_task": {
+          "id": "g1",
+          "goal": "Create an Instagram post for a Diwali sale",
+          "requested": "What discount are you offering, and until when?",
+          "options": [],
+          "agent_id": "image-generator"
+        },
+        "expect": [
+          "pending"
+        ]
+      },
+      "route": {
+        "input_type": "input_for_pending_task",
+        "analysis": "This is a direct reply to the pending task asking what discount is being offered and until when for the Diwali sale Instagram post. I read it as supplying both missing values: a 30% discount and an end date of Sunday.",
+        "tasks": [],
+        "clarification": null,
+        "pending_input": {
+          "task_id": "g1",
+          "input": "30% off, valid till Sunday",
+          "agent_id": "image-generator"
+        },
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "pending"
+        ]
+      },
+      "got": [
+        "pending"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "pending-side-question",
+        "input": "what fonts do you usually use?",
+        "assets": "none",
+        "pending_task": {
+          "id": "g1",
+          "goal": "Create an Instagram post for a Diwali sale",
+          "requested": "What discount are you offering, and until when?",
+          "options": [],
+          "agent_id": "image-generator"
+        },
+        "expect": [
+          "question-handler"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "There is a pending task asking the user to provide the Diwali sale discount and end date for an Instagram post. The user's message does not supply that information; instead it asks a general question about font choices, so it is best read as a new conversational task unrelated to the pending task, which should be parked.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Provide information about the fonts usually used for design work, in response to the user's question.",
+            "desired_result": "conversation",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "question-handler",
+            "confidence": "high",
+            "analysis": "The task asks for general information about fonts used in design work, which is an information request rather than small talk, critique, or any image operation. Question Handler directly covers requests for information about graphic design in general, while ChitChat Handler is excluded because this is not a mere pleasantry.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "question-handler"
+        ]
+      },
+      "got": [
+        "question-handler"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "pending-cancel",
+        "input": "actually forget it, don't make the post",
+        "assets": "none",
+        "pending_task": {
+          "id": "g1",
+          "goal": "Create an Instagram post for a Diwali sale",
+          "requested": "What discount are you offering, and until when?",
+          "options": [],
+          "agent_id": "image-generator"
+        },
+        "expect": [
+          "cancel"
+        ]
+      },
+      "route": {
+        "input_type": "cancellation",
+        "analysis": "The user is responding to a pending image-generation task for an Instagram post for a Diwali sale. \"Actually forget it, don't make the post\" abandons that pending task rather than supplying the missing discount and end date.",
+        "tasks": [],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": "g1",
+        "conflicts": [],
+        "agents": [
+          "cancel"
+        ]
+      },
+      "got": [
+        "cancel"
+      ],
+      "ok": true
+    },
+    {
+      "case": {
+        "id": "pending-new-task",
+        "input": "Leave that, change the background of the coffee post to navy instead",
+        "pending_task": {
+          "id": "g1",
+          "goal": "Create an Instagram post for a Diwali sale",
+          "requested": "What discount are you offering, and until when?",
+          "options": [],
+          "agent_id": "image-generator"
+        },
+        "expect": [
+          "image-editor"
+        ]
+      },
+      "route": {
+        "input_type": "new_task",
+        "analysis": "The input does not answer the pending Diwali-sale question about discount and end date. It refers to the existing focused coffee post asset and changes the requested edit direction, so this is a new task on the current image and the pending task should be treated as parked.",
+        "tasks": [
+          {
+            "id": "T1",
+            "goal": "Change the background of asset a1 version 1, the AI-generated Instagram post for a coffee shop grand opening, to navy.",
+            "desired_result": "changed_image",
+            "performed_by": "system",
+            "depends_on": [],
+            "supports_task_id": null,
+            "decision": "assign",
+            "agent_id": "image-editor",
+            "confidence": "high",
+            "analysis": "The task needs a changed_image: an edit to an existing asset's background colour. Image Editor directly covers changing the background with a specified new value, and its examples include changing a background colour; other candidates either advise, evaluate, generate new designs, or handle artifact repair rather than a specific requested edit.",
+            "missing_inputs": [],
+            "capability_gap": null
+          }
+        ],
+        "clarification": null,
+        "pending_input": null,
+        "affected_task_id": null,
+        "conflicts": [],
+        "agents": [
+          "image-editor"
+        ]
+      },
+      "got": [
+        "image-editor"
+      ],
+      "ok": true
+    }
+  ]
+}

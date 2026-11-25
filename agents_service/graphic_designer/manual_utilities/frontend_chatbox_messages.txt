@@ -1,0 +1,120 @@
+================================================================================
+KOGNIE STUDIO — FRONTEND CHATBOX MESSAGES
+================================================================================
+File: resources/js/dashboard/react/Editor/main.jsx
+
+All messages displayed to the user inside the chatbox (botMessages / suggestionMessages)
+during various events.
+
+================================================================================
+
+1.  MESSAGE: "Hello! I'm Kognie's AI assistant. How can I help you with your design today?"
+    INTERRUPT TYPE: Static / Initial State
+    FUNCTION & FILE: Editor() — initial useState for botMessages (line 1560), main.jsx
+    CONTEXT: Shown on page load as the default welcome message when the Editor component mounts.
+
+--------------------------------------------------------------------------------
+
+2.  MESSAGE: "⚠️ Connection lost. Don't worry — you'll be reconnected automatically when you send your next message. Please note that your previous conversation history will not be available after reconnection."
+    INTERRUPT TYPE: WebSocket Disconnect
+    FUNCTION & FILE: socket.onclose handler inside useEffect (line 2868), main.jsx
+    CONTEXT: Triggered when the WebSocket connection closes unexpectedly. Also used in the reconnected socket's onclose handler (line 3110).
+
+--------------------------------------------------------------------------------
+
+3.  MESSAGE: "Your request is being processed. Please wait for a moment..."
+    INTERRUPT TYPE: Loading / Processing Placeholder (isLoading: true)
+    FUNCTION & FILE: sendWebSocketMessage() (line 3030), main.jsx
+    CONTEXT: Shown immediately after the user sends a message and the WebSocket payload is dispatched. Also shown after a WebSocket reconnection send (line 3083). This message is replaced by the actual bot response when it arrives (filtered out via `m.isLoading`).
+
+--------------------------------------------------------------------------------
+
+4.  MESSAGE: "Failed to upload images. Please try again."
+    INTERRUPT TYPE: Error Message
+    FUNCTION & FILE: sendWebSocketMessage() (line 2966), main.jsx
+    CONTEXT: Triggered when the batch image upload (uploadImagesToServer) fails while sending a message with multiple reference images.
+
+--------------------------------------------------------------------------------
+
+5.  MESSAGE: "Image generation completed, but canvas limit reached. Please remove some images to add this one."
+    INTERRUPT TYPE: Canvas Limit Error
+    FUNCTION & FILE: processBotMessage() (line 2567), main.jsx
+    CONTEXT: Triggered when a `generation_completed` WebSocket response arrives with a new image URL, but the canvas has reached its maximum image limit (checkImageLimits returns canAdd: false).
+
+--------------------------------------------------------------------------------
+
+6.  MESSAGE: "Your image has been updated with the suggestion! ✨"
+    INTERRUPT TYPE: Suggestion Execution Success (Suggestion Chat)
+    FUNCTION & FILE: processBotMessage() — CASE 1: suggestions_executed (line 2548), main.jsx
+    CONTEXT: Shown in the suggestion chat when a `suggestions_executed` response arrives with a new image URL and the image is successfully updated on the canvas. Only displays when NOT in suggestion mode active (the non-intercepted path).
+
+--------------------------------------------------------------------------------
+
+7. MESSAGE: "No problem! What can we help you with next? 😊"
+    INTERRUPT TYPE: Suggestion Declined
+    FUNCTION & FILE: "No, I don't need it" button onClick handler (line 4039), main.jsx
+    CONTEXT: Triggered when the user clicks the "No, I don't need it" button on the suggestion prompt message, declining to enter suggestion mode.
+
+--------------------------------------------------------------------------------
+
+8. MESSAGE: "You've exited suggestion mode. What can we help you with next? 😊"
+    INTERRUPT TYPE: Suggestion Mode Exit
+    FUNCTION & FILE: Multiple exit points — "Exit mode" button (line 3272), "Exit suggestion mode" banner button (line 4465), reject-last-suggestion handler (line 4329), main.jsx
+    CONTEXT: Shown when the user exits suggestion mode through any of the exit buttons, or when the user rejects the last remaining suggestion (which automatically exits suggestion mode).
+
+--------------------------------------------------------------------------------
+
+9. MESSAGE: "Great! All your edits are complete. What would you like to do next? 🎉"
+    INTERRUPT TYPE: Suggestion Edits Complete Exit
+    FUNCTION & FILE: "Exit Suggestion Mode" button after edits complete (line 3377 and line 4086), main.jsx
+    CONTEXT: Shown when all suggestion edits have been executed (suggestionEditsComplete is true) and the user clicks "Exit Suggestion Mode" to return to normal editing.
+
+--------------------------------------------------------------------------------
+
+================================================================================
+NON-CHATBOX FRONTEND MESSAGES (shown as alerts/overlays, not in the chat):
+================================================================================
+
+A.  MESSAGE: "Only a max of {MAX_REFERENCE_IMAGES} images can be added as references."
+    TYPE: Temporary warning (referenceLimitMessage state, auto-clears after 2200ms)
+    FUNCTION & FILE: showReferenceLimitMessage() (line 2094), main.jsx
+    CONTEXT: Shown near the reference image area when the user tries to add more reference images than the maximum allowed.
+
+B.  MESSAGE: "You are in suggestion mode right now"
+    TYPE: Top banner (always visible during suggestion mode)
+    FUNCTION & FILE: Suggestion mode overlay JSX (line 4450), main.jsx
+    CONTEXT: A persistent banner shown at the top of the suggestion mode overlay.
+
+C.  MESSAGE: "You've entered suggestion mode where AI will give you personalized suggestions to improve your image to better suit your purpose."
+    TYPE: Description text in suggestion mode right panel
+    FUNCTION & FILE: Suggestion mode panel JSX (line 3286), main.jsx
+    CONTEXT: Static descriptive text shown in the right panel when suggestion mode is active.
+
+D.  MESSAGE: "Please choose a suggestion to accept it, reject it or modify the suggestion to better suit you."
+    TYPE: Instruction text in suggestion mode right panel
+    FUNCTION & FILE: Suggestion mode panel JSX (line 3289-3290), main.jsx
+    CONTEXT: Static instruction text below the description in the suggestion mode right panel.
+
+E.  MESSAGE: "Execution completed — exit suggestion mode"
+    TYPE: Completion notice in suggestion mode right panel
+    FUNCTION & FILE: Suggestion edits complete block (line 3361), main.jsx
+    CONTEXT: Shown in the right panel when all suggestion edits are complete, alongside the "Exit Suggestion Mode" button.
+
+F.  MESSAGE: "All edits have been implemented!"
+    TYPE: Completion overlay in center panel
+    FUNCTION & FILE: Suggestion edits complete overlay (line 4070), main.jsx
+    CONTEXT: Large overlay message shown in the center of the canvas area when all suggestion edits are complete.
+
+G.  MESSAGE: "Processing suggestions..."
+    TYPE: Loading overlay on image
+    FUNCTION & FILE: renderImage() in suggestion mode (line 4378), main.jsx
+    CONTEXT: Shown as a loading overlay on the center image when suggestion messages contain a loading indicator (isLoading: true).
+
+H.  MESSAGE: "Failed to load image" / "Please try again or select a different image"
+    TYPE: Error placeholder in suggestion mode
+    FUNCTION & FILE: renderImage() in suggestion mode (line 4346-4347), main.jsx
+    CONTEXT: Shown in place of the center image when the image source URL fails to load or is missing.
+
+================================================================================
+END OF DOCUMENT
+================================================================================
